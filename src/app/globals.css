@@ -159,6 +159,26 @@
   .nav-link[data-active="true"]::after {
     transform: scaleX(1);
   }
+
+  /* Intro loading screen. Covers the page while the animation plays, then
+     fades to reveal the hero underneath. */
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background-color: var(--color-bg);
+    transition: opacity var(--dur-slow) var(--ease-standard);
+  }
+  .intro-overlay.is-leaving {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .intro-overlay__animation {
+    width: min(46vw, 300px);
+    max-width: 76vw;
+  }
 }
 
 /* Honour the OS-level reduced-motion preference everywhere, including the
@@ -166,6 +186,10 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  /* Never show the intro animation to these visitors. */
+  .intro-overlay {
+    display: none;
   }
   *,
   *::before,
