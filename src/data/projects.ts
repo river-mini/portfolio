@@ -6,6 +6,8 @@ import type { Project } from "@/types/project";
  * ---------------------------------------------------------------------------
  * Order here is the order shown on the homepage.
  *
+ * shortDescription -> the one-liner under each card, reused as the case-study
+ *                      subtitle. Keep it to a single line.
  * thumbnail     -> put exports in /public/images/projects, or use a CDN URL
  * hoverVideoUrl -> optional, externally hosted MP4/WebM (never committed here)
  *
@@ -22,7 +24,7 @@ export const projects: Project[] = [
     heroMedia: "/images/projects/project-1-wide.png",
     hoverVideoUrl:
       "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
     featured: true,
   },
   {
@@ -32,7 +34,7 @@ export const projects: Project[] = [
     categories: ["Graphic Design"],
     thumbnail: "/images/projects/project-2.png",
     heroMedia: "/images/projects/project-2-wide.png",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
   },
   {
     slug: "project-three",
@@ -43,7 +45,7 @@ export const projects: Project[] = [
     heroMedia: "/images/projects/project-3-wide.png",
     hoverVideoUrl:
       "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
   },
   {
     slug: "project-four",
@@ -54,7 +56,7 @@ export const projects: Project[] = [
     heroMedia: "/images/projects/project-4-wide.png",
     hoverVideoUrl:
       "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
   },
   {
     slug: "project-five",
@@ -63,7 +65,7 @@ export const projects: Project[] = [
     categories: ["Graphic Design", "Motion Design"],
     thumbnail: "/images/projects/project-5.png",
     heroMedia: "/images/projects/project-5-wide.png",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
   },
   {
     slug: "project-six",
@@ -74,7 +76,7 @@ export const projects: Project[] = [
     heroMedia: "/images/projects/project-6-wide.png",
     hoverVideoUrl:
       "https://mdn.github.io/shared-assets/videos/flower.mp4",
-    shortDescription: "Short description placeholder.",
+    shortDescription: "One-line description of the project goes here.",
   },
 ];
 

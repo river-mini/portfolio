@@ -59,6 +59,13 @@
 
   /* --- Radius: square or barely rounded, never pill ----------------------- */
   --radius-media: 3px;
+  --radius-card: 5px;
+
+  /* --- Elevation -----------------------------------------------------------
+     One card shadow, kept soft and low-contrast: the lift should read as a
+     gentle rise off the page rather than a drop shadow. */
+  --shadow-card: 0 14px 30px -16px rgb(27 28 25 / 0.24),
+    0 3px 8px -5px rgb(27 28 25 / 0.12);
 
   /* --- Motion --------------------------------------------------------------
      One easing family site-wide. Durations are in :root below. */

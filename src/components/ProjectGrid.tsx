@@ -41,11 +41,11 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         </p>
 
         {visible.length > 0 ? (
-          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
+          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:gap-x-10 lg:gap-y-14">
             {visible.map((project, index) => (
               <div
                 key={`${filter}-${project.slug}`}
-                className="animate-rise"
+                className="animate-rise h-full"
                 style={{ animationDelay: `${Math.min(index, 5) * 60}ms` }}
               >
                 <ProjectCard project={project} priority={index < 2} />
