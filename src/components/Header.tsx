@@ -63,14 +63,6 @@ export function Header() {
   // Never hide while the mobile menu is open.
   const isHidden = scrolledPast && !open;
 
-  // Let sticky elements below the header (the case-study section nav) track it.
-  useEffect(() => {
-    document.documentElement.dataset.headerHidden = String(isHidden);
-    return () => {
-      document.documentElement.dataset.headerHidden = "false";
-    };
-  }, [isHidden]);
-
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -84,7 +76,7 @@ export function Header() {
 
   return (
     <header
-      className={`border-line/70 bg-bg/85 ease-standard sticky top-0 z-50 border-b backdrop-blur-md transition-transform duration-300 ${
+      className={`border-line/70 bg-bg ease-standard sticky top-0 z-50 border-b transition-transform duration-300 ${
         isHidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >

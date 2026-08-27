@@ -106,11 +106,8 @@
   --dur-base: 300ms;
   --dur-slow: 400ms;
 
-  /* Header height, and the offset anything sticky should sit below. The
-     header sets data-header-hidden on <html> as it slides away, which pulls
-     the offset to zero so the case-study nav follows it up. */
+  /* Header height. */
   --header-h: 4rem;
-  --header-offset: var(--header-h);
 
   /* Layout rhythm */
   --page-max: 90rem;                       /* 1440px content ceiling */
@@ -122,10 +119,6 @@
   :root {
     --header-h: 5rem;
   }
-}
-
-:root[data-header-hidden="true"] {
-  --header-offset: 0rem;
 }
 
 @layer base {
@@ -223,24 +216,9 @@
     animation: nudge 2.2s var(--ease-standard) infinite;
   }
 
-  /* Case-study section nav scrolls horizontally on narrow screens; the
-     scrollbar itself would be visual noise on a one-line bar. */
-  .section-nav__list {
-    scrollbar-width: none;
-  }
-  .section-nav__list::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Case-study sections must clear both the site header and the sticky
-     section nav when jumped to, so override the global [id] scroll margin. */
+  /* Case-study sections clear the site header when jumped to. */
   .case-study-section {
-    scroll-margin-top: 7.5rem;
-  }
-  @media (width >= 48rem) {
-    .case-study-section {
-      scroll-margin-top: 9rem;
-    }
+    scroll-margin-top: 6.5rem;
   }
 }
 

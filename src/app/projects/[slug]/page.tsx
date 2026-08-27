@@ -90,23 +90,26 @@ export default async function ProjectPage({
             priority
           />
         </div>
-      </Container>
 
-      {/* --- Section nav ---------------------------------------------------
-          A direct child of <article> so it stays pinned for the whole page,
-          and spans the full viewport width like the site header. */}
-      <CaseStudyNav
-        sections={caseStudy.sections.map(({ id, heading }) => ({ id, heading }))}
-      />
-
-      <Container>
         {/* --- Case-study body ---------------------------------------------
-            Sections come from src/data/case-studies.ts. Until a project gets
-            its own entry there, the shared placeholder outline is rendered. */}
-        <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
-          {caseStudy.sections.map((section) => (
-            <CaseStudySection key={section.id} section={section} />
-          ))}
+            Section nav in the left rail, content on the right. Sections come
+            from src/data/case-studies.ts; until a project gets its own entry
+            there, the shared placeholder outline is rendered. */}
+        <div className="mt-16 md:mt-24 md:grid md:grid-cols-12 md:gap-10">
+          <div className="hidden md:col-span-3 md:block">
+            <CaseStudyNav
+              sections={caseStudy.sections.map(({ id, heading }) => ({
+                id,
+                heading,
+              }))}
+            />
+          </div>
+
+          <div className="space-y-16 md:col-span-9 md:space-y-20">
+            {caseStudy.sections.map((section) => (
+              <CaseStudySection key={section.id} section={section} />
+            ))}
+          </div>
         </div>
 
         {/* --- Project pager ------------------------------------------------
