@@ -1,0 +1,16 @@
+# Keep binary assets byte-identical across platforms. Without this, Git's
+# CRLF conversion can corrupt files it mistakes for text (a PDF with no NUL
+# bytes, for example).
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.mp4  binary
+*.webm binary
+*.mov  binary
+*.woff binary
+*.woff2 binary
