@@ -9,16 +9,18 @@
 
 @theme {
   /* --- Color ---------------------------------------------------------------
-     Warm beige foundation. Project media supplies most of the color on the
-     page, so the interface palette stays deliberately quiet. */
-  --color-bg: #f2ede3;
-  --color-bg-raised: #eae3d5;   /* media placeholders, subtle fills */
-  --color-ink: #1d1c18;         /* primary text */
-  --color-muted: #6b6455;       /* secondary text */
-  --color-subtle: #8d8674;      /* metadata, inactive states */
-  --color-line: #dbd2c1;        /* hairline borders */
-  --color-line-strong: #c6bba6; /* hover / active borders */
-  --color-accent: #a85a38;      /* used sparingly: focus rings, small details */
+     Cool beige / cream foundation: low-saturation neutrals with a faint green
+     cast rather than a golden one. Project media supplies most of the colour
+     on the page, so the interface palette stays deliberately quiet.
+     Text tones are set to clear WCAG AA contrast against --color-bg. */
+  --color-bg: #f0f0e9;
+  --color-bg-raised: #e5e5dd;   /* media placeholders, subtle fills */
+  --color-ink: #1b1c19;         /* primary text          ~16.5:1 */
+  --color-muted: #5b5e55;       /* secondary text         ~5.8:1 */
+  --color-subtle: #676a60;      /* metadata, inactive     ~4.8:1 */
+  --color-line: #d7d8ce;        /* hairline borders */
+  --color-line-strong: #c0c2b6; /* hover / active borders */
+  --color-accent: #4e5b45;      /* focus rings, small details ~6.3:1 */
 
   /* --- Typography ----------------------------------------------------------
      Fluid sizes. Each token carries its own leading, tracking and weight, so
@@ -103,6 +105,10 @@
     line-height: var(--text-body--line-height);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Safety net for very narrow viewports: a single long word (e.g. at hero
+       size on a 320px screen) breaks instead of overflowing the page. Never
+       triggers when the word already fits. */
+    overflow-wrap: break-word;
   }
 
   ::selection {
