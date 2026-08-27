@@ -3,9 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { SmartImage } from "@/components/SmartImage";
+import { CaseStudyNav } from "@/components/case-study/CaseStudyNav";
 import { CaseStudySection } from "@/components/case-study/CaseStudySection";
 import { getCaseStudy } from "@/data/case-studies";
-import { getNextProject, getProjectBySlug, projects } from "@/data/projects";
+import {
+  getNextProject,
+  getPreviousProject,
+  getProjectBySlug,
+  projects,
+} from "@/data/projects";
 
 /** Every project is known at build time, so all case studies prerender. */
 export function generateStaticParams() {
@@ -42,6 +48,7 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const caseStudy = getCaseStudy(slug);
+  const previousProject = getPreviousProject(slug);
   const nextProject = getNextProject(slug);
   const heroSrc = project.heroMedia ?? project.thumbnail;
 
@@ -84,37 +91,84 @@ export default async function ProjectPage({
             priority
           />
         </div>
+      </Container>
 
+      {/* --- Section nav ---------------------------------------------------
+          A direct child of <article> so it stays pinned for the whole page,
+          and spans the full viewport width like the site header. */}
+      <CaseStudyNav
+        sections={caseStudy.sections.map(({ id, heading }) => ({ id, heading }))}
+      />
+
+      <Container>
         {/* --- Case-study body ---------------------------------------------
             Sections come from src/data/case-studies.ts. Until a project gets
             its own entry there, the shared placeholder outline is rendered. */}
-        <div className="mt-20 space-y-16 md:mt-28 md:space-y-20">
+        <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
           {caseStudy.sections.map((section) => (
             <CaseStudySection key={section.id} section={section} />
           ))}
         </div>
 
-        {/* --- Next project -------------------------------------------------- */}
-        {nextProject ? (
+        {/* --- Project pager ------------------------------------------------
+            Neither direction wraps, so the controls reflect a real position
+            in the project list. */}
+        {previousProject || nextProject ? (
           <nav
-            aria-label="Next project"
-            className="border-line mt-24 border-t pt-8 md:mt-32"
+            aria-label="Project navigation"
+            className="border-line mt-24 grid gap-10 border-t pt-8 sm:grid-cols-2 md:mt-32"
           >
-            <p className="text-label text-subtle uppercase">Next project</p>
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              className="group mt-4 inline-flex items-baseline gap-4"
-            >
-              <span className="text-heading ease-standard transition-colors duration-200 group-hover:text-muted">
-                {nextProject.title}
-              </span>
-              <span
-                aria-hidden="true"
-                className="ease-standard text-muted transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </Link>
+            {previousProject ? (
+              <div>
+                <p className="text-label text-subtle uppercase">Previous project</p>
+                <Link
+                  href={`/projects/${previousProject.slug}`}
+                  className="group mt-4 inline-flex items-baseline gap-3"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="ease-standard text-muted transition-transform duration-300 group-hover:-translate-x-1"
+                  >
+                    &larr;
+                  </span>
+                  <span className="text-heading ease-standard transition-colors duration-200 group-hover:text-muted">
+                    {previousProject.title}
+                  </span>
+                </Link>
+                {previousProject.shortDescription ? (
+                  <p className="text-meta text-subtle mt-2 max-w-[38ch]">
+                    {previousProject.shortDescription}
+                  </p>
+                ) : null}
+              </div>
+            ) : (
+              <div aria-hidden="true" />
+            )}
+
+            {nextProject ? (
+              <div className="sm:text-right">
+                <p className="text-label text-subtle uppercase">Next project</p>
+                <Link
+                  href={`/projects/${nextProject.slug}`}
+                  className="group mt-4 inline-flex items-baseline gap-3"
+                >
+                  <span className="text-heading ease-standard transition-colors duration-200 group-hover:text-muted">
+                    {nextProject.title}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="ease-standard text-muted transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
+                {nextProject.shortDescription ? (
+                  <p className="text-meta text-subtle mt-2 sm:ml-auto max-w-[38ch]">
+                    {nextProject.shortDescription}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
           </nav>
         ) : null}
       </Container>

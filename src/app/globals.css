@@ -203,6 +203,26 @@
     display: inline-block;
     animation: nudge 2.2s var(--ease-standard) infinite;
   }
+
+  /* Case-study section nav scrolls horizontally on narrow screens; the
+     scrollbar itself would be visual noise on a one-line bar. */
+  .section-nav__list {
+    scrollbar-width: none;
+  }
+  .section-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Case-study sections must clear both the site header and the sticky
+     section nav when jumped to, so override the global [id] scroll margin. */
+  .case-study-section {
+    scroll-margin-top: 7.5rem;
+  }
+  @media (width >= 48rem) {
+    .case-study-section {
+      scroll-margin-top: 9rem;
+    }
+  }
 }
 
 /* Honour the OS-level reduced-motion preference everywhere, including the

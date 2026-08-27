@@ -84,9 +84,19 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
-/** Wraps around, so the last project links back to the first. */
+/**
+ * Adjacent projects for the case-study pager. Neither wraps: the first project
+ * has no previous and the last has no next, so the controls always reflect a
+ * real position in the list.
+ */
+export function getPreviousProject(slug: string): Project | undefined {
+  const index = projects.findIndex((project) => project.slug === slug);
+  if (index <= 0) return undefined;
+  return projects[index - 1];
+}
+
 export function getNextProject(slug: string): Project | undefined {
   const index = projects.findIndex((project) => project.slug === slug);
-  if (index === -1) return undefined;
-  return projects[(index + 1) % projects.length];
+  if (index === -1 || index === projects.length - 1) return undefined;
+  return projects[index + 1];
 }

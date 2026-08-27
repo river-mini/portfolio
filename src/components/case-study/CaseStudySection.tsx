@@ -10,7 +10,7 @@ export function CaseStudySection({ section }: { section: Section }) {
     <section
       id={section.id}
       aria-labelledby={`${section.id}-heading`}
-      className="border-line border-t pt-8 md:grid md:grid-cols-12 md:gap-8"
+      className="case-study-section border-line border-t pt-8 md:grid md:grid-cols-12 md:gap-8"
     >
       <h2
         id={`${section.id}-heading`}

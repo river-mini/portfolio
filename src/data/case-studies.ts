@@ -23,14 +23,19 @@ import type { CaseStudy, CaseStudySection } from "@/types/case-study";
 function placeholderSections(): CaseStudySection[] {
   return [
     {
-      id: "overview",
-      heading: "Overview",
-      blocks: [{ type: "text", paragraphs: ["Add overview here."] }],
+      id: "tldr",
+      heading: "TL;DR",
+      blocks: [{ type: "text", paragraphs: ["Add a two-line summary here."] }],
     },
     {
-      id: "context",
-      heading: "Context",
-      blocks: [{ type: "text", paragraphs: ["Add project context here."] }],
+      id: "background",
+      heading: "Background",
+      blocks: [{ type: "text", paragraphs: ["Add background here."] }],
+    },
+    {
+      id: "problem",
+      heading: "Problem",
+      blocks: [{ type: "text", paragraphs: ["Add the problem here."] }],
     },
     {
       id: "process",
@@ -38,14 +43,19 @@ function placeholderSections(): CaseStudySection[] {
       blocks: [{ type: "text", paragraphs: ["Add process here."] }],
     },
     {
-      id: "outcome",
-      heading: "Final Design / Outcome",
+      id: "final-product",
+      heading: "Final Product",
       blocks: [{ type: "text", paragraphs: ["Add final work here."] }],
     },
     {
-      id: "reflection",
-      heading: "Reflection",
-      blocks: [{ type: "text", paragraphs: ["Add reflection here."] }],
+      id: "impact",
+      heading: "Impact",
+      blocks: [{ type: "text", paragraphs: ["Add impact here."] }],
+    },
+    {
+      id: "reflections",
+      heading: "Reflections",
+      blocks: [{ type: "text", paragraphs: ["Add reflections here."] }],
     },
   ];
 }
