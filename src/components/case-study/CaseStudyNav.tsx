@@ -51,10 +51,10 @@ export function CaseStudyNav({ sections }: { sections: NavSection[] }) {
   return (
     <nav
       aria-label="Case study sections"
-      className="border-line/70 bg-bg/85 sticky top-16 z-40 mt-16 border-y backdrop-blur-md md:top-20 md:mt-24"
+      className="border-line/70 bg-bg/85 ease-standard sticky top-(--header-offset) z-40 mt-16 border-y backdrop-blur-md transition-[top] duration-300 md:mt-24"
     >
       <Container>
-        <ul className="section-nav__list flex gap-x-7 overflow-x-auto py-3">
+        <ul className="section-nav__list flex gap-x-7 overflow-x-auto py-3 md:justify-center">
           {sections.map((section) => {
             const isActive = section.id === activeId;
             return (

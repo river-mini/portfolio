@@ -10,6 +10,7 @@ import type { CaseStudy, CaseStudySection } from "@/types/case-study";
  *
  * Available blocks (see src/types/case-study.ts):
  *   { type: "text",      paragraphs: ["...", "..."] }
+ *   { type: "factSheet", items: [{ label, value }] }   // value may be string[]
  *   { type: "media",     media: { src, alt, caption?, kind?, aspect? } }
  *   { type: "mediaPair", media: [ {...}, {...} ] }
  *
@@ -25,7 +26,22 @@ function placeholderSections(): CaseStudySection[] {
     {
       id: "tldr",
       heading: "TL;DR",
-      blocks: [{ type: "text", paragraphs: ["Add a two-line summary here."] }],
+      blocks: [
+        { type: "text", paragraphs: ["Add a two-line summary here."] },
+        {
+          type: "factSheet",
+          items: [
+            { label: "My Role", value: "Add your role." },
+            { label: "Timeline", value: "Add the timeline." },
+            {
+              // An array renders as stacked lines, for listing a team.
+              label: "Team",
+              value: ["Add a team member.", "Add a team member."],
+            },
+            { label: "Tools", value: "Add the tools used." },
+          ],
+        },
+      ],
     },
     {
       id: "background",

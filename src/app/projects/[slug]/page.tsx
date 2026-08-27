@@ -79,14 +79,13 @@ export default async function ProjectPage({
         </header>
 
         {/* --- Hero media --------------------------------------------------- */}
-        <div
-          className="rounded-media bg-bg-raised relative mt-14 w-full overflow-hidden md:mt-20"
-          style={{ aspectRatio: "16 / 9" }}
-        >
+        {/* Narrower and shorter than the container so the hero sets up the
+            case study rather than filling the viewport on its own. */}
+        <div className="rounded-media bg-bg-raised relative mt-14 aspect-[4/3] w-full max-w-6xl overflow-hidden md:mt-20 md:aspect-[2/1]">
           <SmartImage
             src={heroSrc}
             alt={`${project.title} — hero image`}
-            sizes="100vw"
+            sizes="(min-width: 1152px) 1152px, 100vw"
             className="object-cover"
             priority
           />

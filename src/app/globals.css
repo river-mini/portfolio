@@ -60,6 +60,9 @@
   /* --- Radius: square or barely rounded, never pill ----------------------- */
   --radius-media: 3px;
   --radius-card: 5px;
+  /* Slightly rounder than a card: used for inset panels such as the
+     case-study fact sheet. Still well short of a pill. */
+  --radius-panel: 10px;
 
   /* --- Elevation -----------------------------------------------------------
      One card shadow, kept soft and low-contrast: the lift should read as a
@@ -103,10 +106,26 @@
   --dur-base: 300ms;
   --dur-slow: 400ms;
 
+  /* Header height, and the offset anything sticky should sit below. The
+     header sets data-header-hidden on <html> as it slides away, which pulls
+     the offset to zero so the case-study nav follows it up. */
+  --header-h: 4rem;
+  --header-offset: var(--header-h);
+
   /* Layout rhythm */
   --page-max: 90rem;                       /* 1440px content ceiling */
   --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
   --section-gap: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+@media (width >= 48rem) {
+  :root {
+    --header-h: 5rem;
+  }
+}
+
+:root[data-header-hidden="true"] {
+  --header-offset: 0rem;
 }
 
 @layer base {

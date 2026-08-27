@@ -28,6 +28,49 @@ export function Header() {
     setOpen(false);
   }
 
+  // Hide on scroll down, reveal on scroll up. State is set inside a rAF
+  // callback rather than the effect body, and reads are batched to one frame.
+  const [scrolledPast, setScrolledPast] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+
+    const HIDE_BELOW = 120; // stay put near the top of the page
+    const DELTA = 6; // ignore trackpad jitter and rubber-banding
+
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      const diff = y - lastY;
+      if (Math.abs(diff) <= DELTA) return;
+      setScrolledPast(diff > 0 && y > HIDE_BELOW);
+      lastY = y;
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // Never hide while the mobile menu is open.
+  const isHidden = scrolledPast && !open;
+
+  // Let sticky elements below the header (the case-study section nav) track it.
+  useEffect(() => {
+    document.documentElement.dataset.headerHidden = String(isHidden);
+    return () => {
+      document.documentElement.dataset.headerHidden = "false";
+    };
+  }, [isHidden]);
+
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -40,7 +83,11 @@ export function Header() {
   const isActive = (href: string) => href === pathname;
 
   return (
-    <header className="border-line/70 bg-bg/85 sticky top-0 z-50 border-b backdrop-blur-md">
+    <header
+      className={`border-line/70 bg-bg/85 ease-standard sticky top-0 z-50 border-b backdrop-blur-md transition-transform duration-300 ${
+        isHidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <Container>
         <div className="flex h-16 items-center justify-between md:h-20">
           <Link href="/" className="nav-link text-meta font-medium">

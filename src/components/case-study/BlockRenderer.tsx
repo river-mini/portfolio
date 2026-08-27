@@ -1,3 +1,4 @@
+import { FactSheet } from "./FactSheet";
 import { MediaFigure } from "./MediaFigure";
 import { MediaPair } from "./MediaPair";
 import { TextBlock } from "./TextBlock";
@@ -11,6 +12,8 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
   switch (block.type) {
     case "text":
       return <TextBlock paragraphs={block.paragraphs} />;
+    case "factSheet":
+      return <FactSheet items={block.items} />;
     case "media":
       return <MediaFigure media={block.media} />;
     case "mediaPair":

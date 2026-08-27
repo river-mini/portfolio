@@ -18,8 +18,15 @@ export type CaseStudyMedia = {
   aspect?: string;
 };
 
+/** One label/value pair in a fact sheet. Arrays render as stacked lines. */
+export type CaseStudyFact = {
+  label: string;
+  value: string | string[];
+};
+
 export type CaseStudyBlock =
   | { type: "text"; paragraphs: string[] }
+  | { type: "factSheet"; items: CaseStudyFact[] }
   | { type: "media"; media: CaseStudyMedia }
   | { type: "mediaPair"; media: [CaseStudyMedia, CaseStudyMedia] };
 
