@@ -38,7 +38,7 @@ export function Footer() {
         <div className="border-line/60 flex flex-col gap-2 border-t py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-meta text-subtle">© Cindy Truong</p>
           <p className="text-meta text-subtle">
-            UI/UX · Motion Design · Graphic Design
+            UI/UX · Motion Design · Product Design · Graphic Design
           </p>
         </div>
       </Container>

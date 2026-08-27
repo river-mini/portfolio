@@ -10,7 +10,7 @@ export function Hero() {
     <section className="pt-(--section-gap) pb-(--section-gap)">
       <Container>
         <p className="text-label text-subtle uppercase">
-          UI/UX · Motion Design · Graphic Design
+          UI/UX · Motion Design · Product Design · Graphic Design
         </p>
 
         <h1 className="text-display mt-8 max-w-[24ch] text-balance">
