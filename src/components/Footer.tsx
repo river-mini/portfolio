@@ -14,7 +14,7 @@ export function Footer() {
   return (
     <footer className="border-line mt-auto border-t">
       <Container>
-        <div className="flex flex-col gap-10 py-12 md:flex-row md:items-end md:justify-between md:py-16">
+        <div className="flex flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between md:py-10">
           <p className="text-heading max-w-[16ch]">Let&apos;s work together.</p>
 
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
@@ -35,7 +35,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="border-line/60 flex flex-col gap-2 border-t py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-line/60 flex flex-col gap-2 border-t py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-meta text-subtle">© Cindy Truong</p>
           <p className="text-meta text-subtle">
             UI/UX · Motion Design · Product Design · Graphic Design
