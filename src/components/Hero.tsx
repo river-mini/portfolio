@@ -15,7 +15,7 @@ export function Hero() {
         </p>
 
         <h1 className="text-display mx-auto mt-8 max-w-[16ch] text-balance">
-          <span className="text-muted">Hi I&apos;m</span> Cindy Truong,
+          Hi, I&apos;m Cindy!
         </h1>
 
         <p className="text-body-lg text-muted mx-auto mt-7 max-w-[42ch] text-balance">
@@ -24,10 +24,10 @@ export function Hero() {
 
         <Link
           href="/#work"
-          className="nav-link text-meta text-muted hover:text-ink mt-14 inline-block"
+          className="nav-link scroll-cue text-meta text-muted hover:text-ink mt-14 inline-block"
         >
           Selected work
-          <span aria-hidden="true" className="ml-2 inline-block">↓</span>
+          <span aria-hidden="true" className="scroll-cue__arrow ml-2">↓</span>
         </Link>
       </Container>
     </section>

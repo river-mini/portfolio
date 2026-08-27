@@ -68,6 +68,16 @@
   --animate-rise: rise 420ms var(--ease-soft) both;
 }
 
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -178,6 +188,13 @@
   .intro-overlay__animation {
     width: min(46vw, 300px);
     max-width: 76vw;
+  }
+
+  /* Hero scroll cue: the arrow drifts down on a slow loop to read as
+     "scroll". The global reduced-motion block stops it. */
+  .scroll-cue__arrow {
+    display: inline-block;
+    animation: nudge 2.2s var(--ease-standard) infinite;
   }
 }
 
