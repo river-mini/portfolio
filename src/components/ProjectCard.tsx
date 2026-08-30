@@ -25,10 +25,14 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
       href={`/projects/${slug}`}
       className="group border-line rounded-card ease-standard hover:border-line-strong hover:shadow-card flex h-full flex-col border p-3 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1"
     >
+      {/* 3:2 rather than the component default 4:3, and the section is width-
+          capped, so a row of two reads as a grid instead of filling the fold. */}
       <ProjectMedia
         thumbnail={thumbnail}
         videoUrl={hoverVideoUrl}
         alt={`${title} — project preview`}
+        aspect="3 / 2"
+        sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
         priority={priority}
       />
 
