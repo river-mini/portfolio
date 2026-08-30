@@ -8,8 +8,10 @@ type NavSection = { id: string; heading: string };
  * Vertical in-page nav for a case study.
  *
  * Sits in the left rail and stays put while the body scrolls, so every section
- * is one click away at any point. The section currently in view is marked by
- * colour alone -- no movement, so the rail stays quiet while reading.
+ * is one click away at any point. The section in view is marked three ways at
+ * once -- full-contrast ink, a heavier weight, and a bar on the rail -- so the
+ * reader's place is obvious at a glance rather than a subtle tint. Nothing
+ * moves or resizes, so the rail still stays quiet while reading.
  *
  * Desktop only: at narrow widths there is no room for a rail beside the
  * content, and the sections read linearly anyway.
@@ -49,12 +51,22 @@ export function CaseStudyNav({ sections }: { sections: NavSection[] }) {
         {sections.map((section) => {
           const isActive = section.id === activeId;
           return (
-            <li key={section.id}>
+            <li key={section.id} className="relative">
+              {/* Sits directly over the rail hairline, so the active row reads
+                  as a thickened segment of the line rather than a new element. */}
+              <span
+                aria-hidden="true"
+                className={`ease-standard absolute -left-5 top-0 h-full w-0.5 transition-colors duration-200 ${
+                  isActive ? "bg-ink" : "bg-transparent"
+                }`}
+              />
               <a
                 href={`#${section.id}`}
                 aria-current={isActive ? "true" : undefined}
                 className={`text-meta ease-standard block transition-colors duration-200 ${
-                  isActive ? "text-ink" : "text-subtle hover:text-ink"
+                  isActive
+                    ? "text-ink font-medium"
+                    : "text-subtle hover:text-ink"
                 }`}
               >
                 {section.heading}
