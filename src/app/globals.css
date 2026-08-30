@@ -32,6 +32,12 @@
   --text-display--letter-spacing: -0.035em;
   --text-display--font-weight: 500;
 
+  /* Secondary-page title: a step down from display, still clearly a page head. */
+  --text-page-title: clamp(2.25rem, 4.6vw, 3.75rem);
+  --text-page-title--line-height: 1.05;
+  --text-page-title--letter-spacing: -0.03em;
+  --text-page-title--font-weight: 500;
+
   --text-heading: clamp(1.5rem, 2.6vw, 2.25rem);
   --text-heading--line-height: 1.15;
   --text-heading--letter-spacing: -0.022em;
