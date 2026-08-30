@@ -53,7 +53,7 @@ export default async function ProjectPage({
   const heroSrc = project.heroMedia ?? project.thumbnail;
 
   return (
-    <article className="pt-(--section-gap) pb-(--section-gap)">
+    <article className="pt-12 pb-(--section-gap) md:pt-16">
       <Container>
         {/* --- Title block ------------------------------------------------- */}
         <header className="md:grid md:grid-cols-12 md:gap-8">
@@ -79,13 +79,14 @@ export default async function ProjectPage({
         </header>
 
         {/* --- Hero media --------------------------------------------------- */}
-        {/* Narrower and shorter than the container so the hero sets up the
-            case study rather than filling the viewport on its own. */}
-        <div className="rounded-media bg-bg-raised relative mt-14 aspect-[4/3] w-full max-w-6xl overflow-hidden md:mt-20 md:aspect-[2/1]">
+        {/* Banner, pulled in from full bleed: same flat crop, centred and
+            scaled in from the content width. Mobile stays at 3:2 --
+            a 2:1 strip on a phone is a sliver. */}
+        <div className="rounded-media bg-bg-raised relative mx-auto mt-8 aspect-[3/2] w-full max-w-4xl overflow-hidden md:mt-12 md:aspect-[2/1]">
           <SmartImage
             src={heroSrc}
             alt={`${project.title} — hero image`}
-            sizes="(min-width: 1152px) 1152px, 100vw"
+            sizes="(min-width: 896px) 896px, 100vw"
             className="object-cover"
             priority
           />
@@ -95,7 +96,7 @@ export default async function ProjectPage({
             Section nav in the left rail, content on the right. Sections come
             from src/data/case-studies.ts; until a project gets its own entry
             there, the shared placeholder outline is rendered. */}
-        <div className="mt-16 md:mt-24 md:grid md:grid-cols-12 md:gap-10">
+        <div className="mt-10 md:mt-14 md:grid md:grid-cols-12 md:gap-10">
           <div className="hidden md:col-span-3 md:block">
             <CaseStudyNav
               sections={caseStudy.sections.map(({ id, heading }) => ({
