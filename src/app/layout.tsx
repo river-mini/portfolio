@@ -45,7 +45,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${instrumentSans.variable} h-full`}>
+    <html
+      lang="en"
+      // Tells Next to suspend smooth scrolling during route transitions. Without
+      // it the scroll-to-top animates and can be left part-way, dropping a new
+      // page under the sticky header.
+      data-scroll-behavior="smooth"
+      className={`${instrumentSans.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col">
         <a
           href="#main"

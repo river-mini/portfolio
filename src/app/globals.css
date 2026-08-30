@@ -162,6 +162,14 @@
   [id] {
     scroll-margin-top: 6rem;
   }
+
+  /* Belt and braces for the above: if a route change ever scrolls a page root
+     into view rather than scrolling the window to the top, reserve the header
+     height so the title underneath is not covered. */
+  main,
+  main > * {
+    scroll-margin-top: 6.5rem;
+  }
 }
 
 @layer components {
@@ -171,6 +179,16 @@
     max-width: var(--page-max);
     margin-inline: auto;
     padding-inline: var(--page-gutter);
+  }
+
+  /* Hero lines rise in once the intro overlay starts clearing -- the overlay
+     sets data-intro-done on <html>. They start hidden so nothing shows through
+     the fade; the noscript rule in Hero puts them back if the intro never runs. */
+  .hero-line {
+    opacity: 0;
+  }
+  [data-intro-done="true"] .hero-line {
+    animation: rise 520ms var(--ease-soft) both;
   }
 
   /* Understated nav link with an underline that grows from the left. */

@@ -101,6 +101,15 @@ export function IntroOverlay() {
     return () => window.clearTimeout(id);
   }, [phase]);
 
+  // Release the hero entrance as soon as the overlay starts clearing, so the
+  // lines rise in behind the fade rather than after it. Also covers the
+  // client-side return to home, where the phase starts at "done" and the
+  // overlay never renders at all.
+  useEffect(() => {
+    if (phase === "playing") return;
+    document.documentElement.dataset.introDone = "true";
+  }, [phase]);
+
   // Hold the page still while the overlay covers it.
   useEffect(() => {
     if (phase === "done") return;
