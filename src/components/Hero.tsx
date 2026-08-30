@@ -11,7 +11,7 @@ export function Hero() {
     <section className="flex min-h-[calc(100svh-4rem)] items-center py-20 md:min-h-[calc(100svh-5rem)]">
       <Container className="text-center">
         <p className="text-label text-subtle uppercase">
-          UI/UX · Motion Design · Product Design · Graphic Design
+          UI/UX · Motion · Product · Graphic
         </p>
 
         <h1 className="text-display mx-auto mt-8 max-w-[16ch] text-balance">

@@ -91,7 +91,7 @@ export function Header() {
               Cindy Truong
             </span>
             <span className="text-label text-subtle mt-1 uppercase">
-              Product Designer
+              Product &amp; Visual Designer
             </span>
           </Link>
 
