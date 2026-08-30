@@ -14,7 +14,7 @@ export function Footer() {
   return (
     <footer className="border-line mt-auto border-t">
       <Container>
-        <div className="flex flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between md:py-10">
+        <div className="flex flex-col gap-4 py-4 md:flex-row md:items-end md:justify-between md:py-6">
           <p className="text-heading max-w-[16ch]">Let&apos;s work together.</p>
 
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
