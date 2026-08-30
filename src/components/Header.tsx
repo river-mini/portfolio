@@ -4,16 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "./Container";
+import { WorkLink } from "./WorkLink";
 
 /**
  * `/#work` works from every page: on the homepage the browser smooth-scrolls
  * to the work section, elsewhere it navigates home and then jumps to it.
  */
 const NAV_LINKS = [
-  { label: "Work", href: "/#work", external: false },
-  { label: "About", href: "/about", external: false },
+  { label: "Work", href: "/#work", external: false, hash: true },
+  { label: "About", href: "/about", external: false, hash: false },
   // Drop the real PDF at public/resume.pdf to replace the placeholder.
-  { label: "Resume", href: "/resume.pdf", external: true },
+  { label: "Resume", href: "/resume.pdf", external: true, hash: false },
 ] as const;
 
 export function Header() {
@@ -82,15 +83,27 @@ export function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between md:h-20">
-          <Link href="/" className="nav-link text-meta font-medium">
-            Cindy Truong
+          {/* One link for the whole lockup, so the nav-link underline spans both
+              lines instead of stopping short under the name. items-start keeps
+              it to the lockup width rather than the header column. */}
+          <Link href="/" className="nav-link flex flex-col items-start">
+            <span className="text-body font-semibold leading-tight">
+              Cindy Truong
+            </span>
+            <span className="text-label text-subtle mt-1 uppercase">
+              Product Designer
+            </span>
           </Link>
 
           <nav aria-label="Primary" className="hidden md:block">
             <ul className="flex items-center gap-9">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  {link.external ? (
+                  {link.hash ? (
+                    <WorkLink className="nav-link text-meta text-muted hover:text-ink">
+                      {link.label}
+                    </WorkLink>
+                  ) : link.external ? (
                     <a
                       href={link.href}
                       target="_blank"
@@ -149,7 +162,14 @@ export function Header() {
           <ul className="flex flex-col py-2">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                {link.external ? (
+                {link.hash ? (
+                  <WorkLink
+                    className="text-body block py-3"
+                    onNavigate={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </WorkLink>
+                ) : link.external ? (
                   <a
                     href={link.href}
                     target="_blank"

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Container } from "./Container";
+import { WorkLink } from "./WorkLink";
 
 /**
  * Typography-led introduction. Copy lives here so it is easy to find and
@@ -22,13 +22,10 @@ export function Hero() {
           I craft playful and thoughtful experiences with emotional resonance!
         </p>
 
-        <Link
-          href="/#work"
-          className="nav-link scroll-cue text-meta text-muted hover:text-ink mt-14 inline-block"
-        >
+        <WorkLink className="nav-link scroll-cue text-meta text-muted hover:text-ink mt-14 inline-block">
           Selected work
           <span aria-hidden="true" className="scroll-cue__arrow ml-2">↓</span>
-        </Link>
+        </WorkLink>
       </Container>
     </section>
   );
