@@ -1,13 +1,12 @@
 import { Container } from "./Container";
 
 /**
- * PLACEHOLDERS — replace each href with the real destination.
- * Remove any row that isn't relevant.
+ * Contact rows, in the order they appear. An http(s) href opens in a new tab;
+ * mailto: and relative hrefs stay in place.
  */
 const CONTACT_LINKS = [
-  { label: "Email", href: "mailto:hello@example.com" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Email", href: "mailto:cindytruongg1@gmail.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ciindyy-truong/" },
 ] as const;
 
 export function Footer() {
@@ -15,7 +14,7 @@ export function Footer() {
     <footer className="border-line mt-auto border-t">
       <Container>
         <div className="flex flex-col gap-4 py-4 md:flex-row md:items-end md:justify-between md:py-6">
-          <p className="text-heading max-w-[16ch]">Let&apos;s work together.</p>
+          <p className="text-heading max-w-[16ch]">Thanks for scrolling :D</p>
 
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {CONTACT_LINKS.map((link) => (
