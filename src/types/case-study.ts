@@ -25,7 +25,8 @@ export type CaseStudyFact = {
 };
 
 export type CaseStudyBlock =
-  | { type: "text"; paragraphs: string[] }
+  /** `heading` renders above the paragraphs, for a sub-head inside a section. */
+  | { type: "text"; heading?: string; paragraphs: string[] }
   | { type: "factSheet"; items: CaseStudyFact[] }
   | { type: "media"; media: CaseStudyMedia }
   | { type: "mediaPair"; media: [CaseStudyMedia, CaseStudyMedia] };

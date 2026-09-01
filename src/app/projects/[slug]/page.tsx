@@ -96,8 +96,8 @@ export default async function ProjectPage({
             Section nav in the left rail, content on the right. Sections come
             from src/data/case-studies.ts; until a project gets its own entry
             there, the shared placeholder outline is rendered. */}
-        <div className="mt-10 md:mt-14 md:grid md:grid-cols-12 md:gap-10">
-          <div className="hidden md:col-span-3 md:block">
+        <div className="mt-10 md:mt-14 md:grid md:grid-cols-[11rem_1fr] md:gap-10">
+          <div className="hidden md:block">
             <CaseStudyNav
               sections={caseStudy.sections.map(({ id, heading }) => ({
                 id,
@@ -106,7 +106,7 @@ export default async function ProjectPage({
             />
           </div>
 
-          <div className="space-y-16 md:col-span-9 md:space-y-20">
+          <div className="space-y-16 md:space-y-20">
             {caseStudy.sections.map((section) => (
               <CaseStudySection key={section.id} section={section} />
             ))}

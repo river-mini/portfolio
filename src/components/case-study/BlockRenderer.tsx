@@ -11,7 +11,7 @@ import type { CaseStudyBlock } from "@/types/case-study";
 export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
   switch (block.type) {
     case "text":
-      return <TextBlock paragraphs={block.paragraphs} />;
+      return <TextBlock heading={block.heading} paragraphs={block.paragraphs} />;
     case "factSheet":
       return <FactSheet items={block.items} />;
     case "media":
