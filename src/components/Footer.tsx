@@ -14,7 +14,7 @@ export function Footer() {
     <footer className="border-line mt-auto border-t">
       <Container>
         <div className="flex flex-col gap-4 py-4 md:flex-row md:items-end md:justify-between md:py-6">
-          <p className="text-heading max-w-[16ch]">Thanks for scrolling :D</p>
+          <p className="text-heading">Thanks for scrolling :D</p>
 
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {CONTACT_LINKS.map((link) => (
