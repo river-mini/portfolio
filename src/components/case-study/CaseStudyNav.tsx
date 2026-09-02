@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
+import { scrollToElement } from "../SmoothScroll";
 
 type NavSection = { id: string; heading: string };
 
@@ -43,6 +44,23 @@ export function CaseStudyNav({ sections }: { sections: NavSection[] }) {
     return () => observer.disconnect();
   }, [sections]);
 
+  // Drive the jump ourselves rather than leaving it to the browser hash. A
+  // native jump ignores the eased scroll and lands on a different offset than
+  // Lenis would, and re-clicking a section already in the URL does nothing.
+  //
+  // The hash is written with replaceState so the section stays linkable
+  // without stacking a history entry per click. Next patches that method to
+  // sync its router, which re-renders the tree -- safe because SmoothScroll
+  // only resets scroll when the pathname actually changes.
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    scrollToElement(target);
+    window.history.replaceState(null, "", `#${id}`);
+  };
+
   if (sections.length === 0) return null;
 
   return (
@@ -62,6 +80,7 @@ export function CaseStudyNav({ sections }: { sections: NavSection[] }) {
               />
               <a
                 href={`#${section.id}`}
+                onClick={(event) => handleClick(event, section.id)}
                 aria-current={isActive ? "true" : undefined}
                 className={`text-meta ease-standard block transition-colors duration-200 ${
                   isActive

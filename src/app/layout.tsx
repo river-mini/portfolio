@@ -47,8 +47,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${instrumentSans.variable} h-full`}>
-      <body className="flex min-h-full flex-col">
+    // No height on <html>: Lenis measures documentElement.scrollHeight and
+    // watches that element for resizes, so pinning it to 100% of the viewport
+    // leaves the observer silent as content grows and the scroll clamps short.
+    // The sticky footer uses dvh on <body> instead, which needs no parent
+    // height to resolve against.
+    <html lang="en" className={instrumentSans.variable}>
+      <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
           className="bg-bg text-ink focus:ring-ink sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:rounded-xs focus:px-4 focus:py-2"
