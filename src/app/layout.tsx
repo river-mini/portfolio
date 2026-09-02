@@ -16,8 +16,9 @@ const SITE_DESCRIPTION =
   "Portfolio of Cindy Truong, a multidisciplinary designer working across UI/UX, motion design, and graphic design.";
 
 export const metadata: Metadata = {
-  // TODO: swap for the real domain once the site is deployed.
-  metadataBase: new URL("https://cindytruong.com"),
+  // Absolute URLs for the OG image are built from this. Update it if the site
+  // moves to a custom domain.
+  metadataBase: new URL("https://cindytruong.vercel.app"),
   title: { default: SITE_TITLE, template: `%s — ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   openGraph: {
