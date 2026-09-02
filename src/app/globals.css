@@ -129,7 +129,10 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Wheel scrolling is eased by Lenis (see SmoothScroll.tsx), which needs
+       this left alone -- CSS smooth would fight its per-frame updates. Anchor
+       jumps go through Lenis too. Reduced-motion visitors get neither. */
+    scroll-behavior: auto;
   }
 
   body {

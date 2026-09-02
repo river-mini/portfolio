@@ -3,6 +3,7 @@ import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
@@ -46,14 +47,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      // Tells Next to suspend smooth scrolling during route transitions. Without
-      // it the scroll-to-top animates and can be left part-way, dropping a new
-      // page under the sticky header.
-      data-scroll-behavior="smooth"
-      className={`${instrumentSans.variable} h-full`}
-    >
+    <html lang="en" className={`${instrumentSans.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
@@ -62,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
 
+        <SmoothScroll />
         <Header />
         <main id="main" className="flex-1">
           {children}
