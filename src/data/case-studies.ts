@@ -273,13 +273,13 @@ const caseStudies: Record<string, CaseStudy> = {
               "A personalized board built from the interests a student picks during onboarding, with a time-aware greeting and upcoming events up top.",
             ],
           },
-          // TODO: swap src for the hosted URL. The file is served from
-          // /public/videos for local preview only -- that directory is
-          // gitignored, so this will 404 once deployed until the URL is in.
+          // Hosted on Vercel Blob rather than committed -- see the README on
+          // keeping video out of the repo. Served as video/mp4 despite having
+          // no extension in the path.
           {
             type: "media",
             media: {
-              src: "/videos/longhorn-loop-01.mp4",
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/longhorn-loop-sneak-peek",
               kind: "video",
               alt: "Home — the personalized event board",
               caption: "Layout ideated with the design team; final screen by a teammate.",
