@@ -273,14 +273,17 @@ const caseStudies: Record<string, CaseStudy> = {
               "A personalized board built from the interests a student picks during onboarding, with a time-aware greeting and upcoming events up top.",
             ],
           },
-          // Appendix: Home, as a prototype screen recording (Hifis__11_.png for
-          // reference). Set kind: "video" and a CDN URL once recorded.
+          // TODO: swap src for the hosted URL. The file is served from
+          // /public/videos for local preview only -- that directory is
+          // gitignored, so this will 404 once deployed until the URL is in.
           {
             type: "media",
             media: {
-              src: PLACEHOLDER_MEDIA,
+              src: "/videos/longhorn-loop-01.mp4",
+              kind: "video",
               alt: "Home — the personalized event board",
               caption: "Layout ideated with the design team; final screen by a teammate.",
+              aspect: "9 / 16",
             },
           },
           {
