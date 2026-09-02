@@ -17,8 +17,16 @@ type ProjectCardProps = {
  * is a transform, so it never reflows the grid.
  */
 export function ProjectCard({ project, priority = false }: ProjectCardProps) {
-  const { slug, title, year, categories, thumbnail, hoverVideoUrl, shortDescription } =
-    project;
+  const {
+    slug,
+    title,
+    year,
+    categories,
+    thumbnail,
+    thumbnailFit,
+    hoverVideoUrl,
+    shortDescription,
+  } = project;
 
   return (
     <Link
@@ -32,6 +40,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
         videoUrl={hoverVideoUrl}
         alt={`${title} — project preview`}
         aspect="3 / 2"
+        fit={thumbnailFit}
         sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
         priority={priority}
       />

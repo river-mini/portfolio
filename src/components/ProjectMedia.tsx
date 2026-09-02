@@ -41,6 +41,7 @@ type ProjectMediaProps = {
   aspect?: string;
   sizes?: string;
   priority?: boolean;
+  fit?: "cover" | "contain";
 };
 
 /**
@@ -56,6 +57,7 @@ export function ProjectMedia({
   aspect = "4 / 3",
   sizes = "(min-width: 768px) 50vw, 100vw",
   priority = false,
+  fit = "cover",
 }: ProjectMediaProps) {
   const hoverEnabled = useHoverPreviewEnabled();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -107,7 +109,9 @@ export function ProjectMedia({
         alt={alt}
         sizes={sizes}
         priority={priority}
-        className="ease-standard object-cover transition-[opacity,transform] duration-400 group-hover:scale-[1.015]"
+        className={`ease-standard ${
+          fit === "contain" ? "object-contain p-4" : "object-cover"
+        } transition-[opacity,transform] duration-400 group-hover:scale-[1.015]`}
         style={{ opacity: playing ? 0 : 1 }}
       />
 
