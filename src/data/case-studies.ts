@@ -85,6 +85,220 @@ const PLACEHOLDER_MEDIA = "/images/projects/project-1-wide.png";
 
 /** Per-slug overrides. Projects without an entry fall back to the outline. */
 const caseStudies: Record<string, CaseStudy> = {
+  "animated-intro": {
+    sections: [
+      {
+        id: "tldr",
+        heading: "TL;DR",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "ARH 301 needed a 30-second animated intro. The brief asked for three things that do not naturally sit together: scholarly, clever, and wacky. I pitched three concepts, animated two as rough tests, and shipped a gallery walk through the course’s own artwork that ends with the professor’s eyes winking at the camera from inside a Greek statue.",
+              "My first project after training. It shipped for Fall 2026.",
+            ],
+          },
+          {
+            type: "factSheet",
+            items: [
+              { label: "Role", value: "Design STA — concept, animation, art direction" },
+              { label: "Timeline", value: "Jul 7 — Aug 10, 2026 (~5 weeks)" },
+              {
+                label: "Team",
+                value: [
+                  "Solo",
+                  "Design mentorship from Lila Mali",
+                  "Project management from LAITS",
+                ],
+              },
+              { label: "Tools", value: "After Effects, Photoshop, Adobe Stock" },
+              { label: "Context", value: "Motion · Solo · Client work · Shipped Fall 2026" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "background",
+        heading: "Background",
+        blocks: [
+          {
+            type: "text",
+            heading: "A course that already looked good",
+            paragraphs: [
+              "ARH 301 had a strong existing graphics package — it just did not have an intro. The previous version of the course, taught by a different professor, had one, but it was heavier in tone than Dr. Cushing’s, and the PM team wanted something that matched him instead of inheriting the old feel.",
+              "Cushing did not come in with strong opinions about the design, which meant near-total creative freedom and no obvious place to start.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Scholarly, clever, and wacky — in thirty seconds",
+            paragraphs: [
+              "The brief was a tone problem, not a technical one. An homage to Masterpiece Theatre, the PBS format that reads as prestigious and a little stuffy — but undercut with enough humor to match a professor described to me as scholarly with a touch of wacky.",
+              "Push too far toward prestige and it is the intro they already rejected. Push too far toward funny and it stops looking like a 300-level art history course.",
+              "What I had to work with: Cushing’s own course slides, a stated preference for Greek and Roman sculpture, and a research background in Dada-period zines.",
+              "How might a course intro feel like a real gallery and still land a joke?",
+            ],
+          },
+        ],
+      },
+      {
+        id: "process",
+        heading: "Process",
+        blocks: [
+          {
+            type: "text",
+            heading: "01 — Three concepts, two worth animating",
+            paragraphs: [
+              "I brought three directions to my design mentor. She responded to two, and suggested I storyboard both and rough them out in After Effects rather than argue about them as descriptions — motion is hard to evaluate on paper.",
+            ],
+          },
+          // Appendix: storyboard frames, if they exist.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "Storyboard frames for the two concepts" },
+          },
+          {
+            type: "text",
+            heading: "02 — Killing the one that read fine on paper",
+            paragraphs: [
+              "Concept one was a spotlight revealing “ARH 301”, zooming out to the full course name over an aged book cover, with course artwork scrolling in a carousel inside the letterforms.",
+              "It hit scholarly and it hit Masterpiece Theatre. But once it was moving, the artwork cycling up and down inside the letters was repetitive in a way neither of us could unsee. It was a static idea I had added motion to, rather than an idea that needed motion.",
+            ],
+          },
+          // Appendix: ARH301-Idea-1.mp4 -- currently on the blog. Upload to
+          // Blob and set kind: "video" with the public URL.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "Concept one: spotlight title with artwork inside the letterforms" },
+          },
+          {
+            type: "text",
+            heading: "03 — Building a room instead of a title card",
+            paragraphs: [
+              "Concept two put the viewer inside a gallery. Brown walls, wood floors, and the course’s actual artwork in ornate gold frames sourced from Adobe Stock — with the modern pieces hung in plain black frames on white, the way a real museum shifts its presentation by era.",
+              "The camera walks in, takes the right wall, then the middle, then the left, then returns to the statue at the center of the room. An arch at the far end sells the idea that there is a next room, which is where the intro exits.",
+            ],
+          },
+          // Appendix: arh301-Intro-transitions.mp4 -- the WIP with transitions
+          // but no statue swap yet. On the blog; upload to Blob.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "Work in progress: gallery walk with transitions" },
+          },
+          {
+            type: "text",
+            heading: "04 — Swapping the centerpiece",
+            paragraphs: [
+              "I had put Michelangelo’s David at the center of the room — a recognizable centerpiece and an easy read.",
+              "Review flagged it: this is a course intro playing to a full undergraduate lecture, and David’s nudity had caused a distraction in a previous course. I needed a statue that was covered, still came from the course material, and had enough space around the eyes for the wink to land at a distance. Berlin Kore met all three. I lengthened the wink while I was in there.",
+            ],
+          },
+          // Appendix: matched-camera stills, David on the left, Berlin Kore on
+          // the right. Same frame, same camera position.
+          {
+            type: "mediaPair",
+            media: [
+              { src: PLACEHOLDER_MEDIA, alt: "David at the center of the gallery", caption: "Before — David" },
+              { src: PLACEHOLDER_MEDIA, alt: "Berlin Kore at the center of the gallery", caption: "After — Berlin Kore" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "final-product",
+        heading: "Final product",
+        blocks: [
+          {
+            type: "text",
+            heading: "The wink",
+            paragraphs: [
+              "The statue at the center of the gallery has eyes. They are Dr. Cushing’s, pulled from a photo of him. After the camera finishes the tour and comes back around, the statue winks, and the shot pushes past its shoulder through the arch into the next room.",
+              "That is the whole joke, and it does all three jobs at once — the gallery is scholarly, the eyes are clever, a winking Archaic Greek statue wearing your professor’s face is wacky.",
+            ],
+          },
+          {
+            type: "media",
+            media: {
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/ARH301-Cushing_intro-NEW.mp4",
+              kind: "video",
+              alt: "The finished ARH 301 animated course intro",
+              aspect: "16 / 9",
+            },
+          },
+          {
+            type: "text",
+            heading: "Details",
+            paragraphs: [
+              "Gold frames for historical work, black on white for modern — presentation shifts with era, like a real gallery.",
+              "Three walls of course artwork, drawn from Cushing’s own slides.",
+              "The arch as an exit, implying a room the course is about to walk you into.",
+            ],
+          },
+          // Appendix: gold frame vs black frame wall sections, and the arch.
+          {
+            type: "mediaPair",
+            media: [
+              { src: PLACEHOLDER_MEDIA, alt: "Historical work in ornate gold frames", caption: "Gold frames, historical work" },
+              { src: PLACEHOLDER_MEDIA, alt: "Modern work in plain black frames on white", caption: "Black frames, modern work" },
+            ],
+          },
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "The arch at the far end of the gallery", caption: "The arch, where the intro exits" },
+          },
+        ],
+      },
+      {
+        id: "impact",
+        heading: "Impact",
+        blocks: [
+          {
+            type: "text",
+            heading: "Shipped for Fall 2026",
+            paragraphs: [
+              "Running as the course intro for ARH 301. I finished the animation on August 10; the LAITS post team scored and attached the audio, and the finished intro was delivered August 25.",
+            ],
+          },
+          {
+            type: "factSheet",
+            items: [
+              { label: "Final runtime", value: "30 seconds" },
+              { label: "Concepts", value: "3 pitched, 2 animated" },
+              { label: "Milestone", value: "First project after completing training" },
+              { label: "Revisions", value: "1 round to final approval" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "reflections",
+        heading: "Reflections",
+        blocks: [
+          {
+            type: "text",
+            heading: "Rough animation is cheaper than argument",
+            paragraphs: [
+              "Concept one seemed strong until it moved. Building both as rough After Effects tests took a couple of days and settled a question that could have eaten a week of discussion — and would have been far more expensive to discover after the piece was polished.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Constraints made the joke better",
+            paragraphs: [
+              "Swapping David out felt like a limitation. Berlin Kore turned out to be the better choice on its own merits: it is from a period the course’s paintings do not cover, and the face gave me more room to make the wink readable. The constraint pushed the piece somewhere I would not have gone.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Fresh eyes",
+            paragraphs: [
+              "By the end of the project every version looked identical to me. Almost every improvement in the final came from someone else looking at it for the first time.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
   "longhorn-loop": {
     sections: [
       {

@@ -23,16 +23,18 @@ export const projects: Project[] = [
     thumbnail: "/images/projects/longhorn-loop/splash.png",
     thumbnailFit: "contain",
     heroMedia: "/images/projects/project-1-wide.png",
-    shortDescription: "One-line description of the project goes here.",
+    shortDescription:
+      "A personalized event board bringing 1,000+ UT orgs’ events into one feed.",
   },
   {
     slug: "animated-intro",
     title: "ARH301 Animated Intro",
     year: "Jul — Aug 2026",
     categories: ["Motion Design"],
-    thumbnail: "/images/projects/project-2.png",
-    heroMedia: "/images/projects/project-2-wide.png",
-    shortDescription: "One-line description of the project goes here.",
+    thumbnail: "/images/projects/arh301/gallery.png",
+    heroMedia: "/images/projects/arh301/gallery.png",
+    shortDescription:
+      "A 30-second animated course intro that walks you through a gallery and is cheeky on the way out.",
   },
   {
     slug: "sweethearts-x-barbie",
