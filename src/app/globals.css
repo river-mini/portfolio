@@ -184,6 +184,14 @@
     padding-inline: var(--page-gutter);
   }
 
+  /* Landing animation for the secondary pages: fade in and rise, the same
+     motion the hero lines use. Pure CSS, so it plays on a direct load as well
+     as a client-side navigation, and the global reduced-motion block collapses
+     it. Stagger with an inline animationDelay. */
+  .page-rise {
+    animation: rise 520ms var(--ease-soft) both;
+  }
+
   /* Hero lines rise in once the intro overlay starts clearing -- the overlay
      sets data-intro-done on <html>. They start hidden so nothing shows through
      the fade; the noscript rule in Hero puts them back if the intro never runs. */

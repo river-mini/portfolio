@@ -56,7 +56,7 @@ export default async function ProjectPage({
     <article className="pt-12 pb-(--section-gap) md:pt-16">
       <Container>
         {/* --- Title block ------------------------------------------------- */}
-        <header className="md:grid md:grid-cols-12 md:gap-8">
+        <header className="page-rise md:grid md:grid-cols-12 md:gap-8">
           <div className="md:col-span-8">
             <h1 className="text-display max-w-[14ch]">{project.title}</h1>
             {project.shortDescription ? (
@@ -82,7 +82,10 @@ export default async function ProjectPage({
         {/* Banner, pulled in from full bleed: same flat crop, centred and
             scaled in from the content width. Mobile stays at 3:2 --
             a 2:1 strip on a phone is a sliver. */}
-        <div className="rounded-media bg-bg-raised relative mx-auto mt-8 aspect-[3/2] w-full max-w-4xl overflow-hidden md:mt-12 md:aspect-[2/1]">
+        <div
+          className="page-rise rounded-media bg-bg-raised relative mx-auto mt-8 aspect-[3/2] w-full max-w-4xl overflow-hidden md:mt-12 md:aspect-[2/1]"
+          style={{ animationDelay: "120ms" }}
+        >
           <SmartImage
             src={heroSrc}
             alt={`${project.title} — hero image`}
@@ -96,7 +99,10 @@ export default async function ProjectPage({
             Section nav in the left rail, content on the right. Sections come
             from src/data/case-studies.ts; until a project gets its own entry
             there, the shared placeholder outline is rendered. */}
-        <div className="mt-10 md:mt-14 md:grid md:grid-cols-[11rem_1fr] md:gap-10">
+        <div
+          className="page-rise mt-10 md:mt-14 md:grid md:grid-cols-[11rem_1fr] md:gap-10"
+          style={{ animationDelay: "240ms" }}
+        >
           <div className="hidden md:block">
             <CaseStudyNav
               sections={caseStudy.sections.map(({ id, heading }) => ({

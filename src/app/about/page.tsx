@@ -64,9 +64,12 @@ export default function AboutPage() {
   return (
     <div className="pt-12 pb-(--section-gap) md:pt-16">
       <Container>
-        <h1 className="text-page-title max-w-[16ch]">About me!</h1>
+        <h1 className="page-rise text-page-title max-w-[16ch]">About me!</h1>
 
-        <div className="mt-10 grid grid-cols-1 gap-12 md:mt-14 md:grid-cols-12 md:gap-10">
+        <div
+          className="page-rise mt-10 grid grid-cols-1 gap-12 md:mt-14 md:grid-cols-12 md:gap-10"
+          style={{ animationDelay: "120ms" }}
+        >
           <div className="md:col-span-4">
             <PhotoCarousel photos={PHOTOS} />
           </div>
