@@ -29,6 +29,7 @@ export function Hero() {
         <h1 className="hero-line mt-8" style={{ animationDelay: "110ms" }}>
           <WordmarkAnimation
             src="/animations/CindyWaterMark.webm"
+            still="/animations/CindyWaterMark-still.webp"
             label="Cindy Truong"
           />
         </h1>

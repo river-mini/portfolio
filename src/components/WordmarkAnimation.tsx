@@ -40,7 +40,7 @@ const MAX_WIDTH =
  * Does this browser honour the video's alpha channel?
  *
  * WebKit plays VP9 in WebM but ignores its transparency, painting what should
- * be transparent as opaque black -- so on any iOS browser the wordmark arrives
+ * be see-through as opaque black -- so on any iOS browser the wordmark arrives
  * as a black rectangle. Nothing reports this, and canPlayType says "probably"
  * either way, so the frame is drawn to a canvas and a corner pixel is read:
  * see-through means alpha survived decoding, opaque means it did not.
@@ -75,11 +75,17 @@ function rendersAlpha(video: HTMLVideoElement) {
  */
 export function WordmarkAnimation({
   src,
+  still,
   label,
   className = "",
 }: {
   src: string;
-  /** Read out in place of the animation, and shown if alpha is unsupported. */
+  /**
+   * Shown where the video would paint as a black box. A frame of the same
+   * wordmark, so the mark is still right -- it just is not moving.
+   */
+  still: string;
+  /** Read out in place of the animation, for screen readers and crawlers. */
   label: string;
   className?: string;
 }) {
@@ -121,30 +127,34 @@ export function WordmarkAnimation({
     return whenReady(check);
   }, []);
 
-  // Falls back to the name as type: better a wordmark in the site's own
-  // typeface than a black rectangle where the animation should be.
-  if (alphaBroken) {
-    return (
-      <span className={`text-display mx-auto block max-w-[16ch] text-balance ${className}`}>
-        {label}
-      </span>
-    );
-  }
-
   return (
     <span
       className={`mx-auto block w-full ${className}`}
       style={{ aspectRatio: ASPECT, maxWidth: MAX_WIDTH }}
     >
-      <video
-        ref={ref}
-        src={src}
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        className="h-full w-full object-contain"
-      />
+      {/* Same frame, same box: where alpha is dropped the wordmark simply stops
+          moving, instead of turning into a black rectangle. */}
+      {alphaBroken ? (
+        // A fixed asset swapped in at runtime, already sized and compressed;
+        // next/image would add a round trip and nothing else.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={still}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-contain"
+        />
+      ) : (
+        <video
+          ref={ref}
+          src={src}
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="h-full w-full object-contain"
+        />
+      )}
       <span className="sr-only">{label}</span>
     </span>
   );
