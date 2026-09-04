@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * The source is 1920x1080 and the wrapper matches it exactly, with the video
@@ -37,6 +37,32 @@ const MAX_WIDTH =
   ")))";
 
 /**
+ * Does this browser honour the video's alpha channel?
+ *
+ * WebKit plays VP9 in WebM but ignores its transparency, painting what should
+ * be transparent as opaque black -- so on any iOS browser the wordmark arrives
+ * as a black rectangle. Nothing reports this, and canPlayType says "probably"
+ * either way, so the frame is drawn to a canvas and a corner pixel is read:
+ * see-through means alpha survived decoding, opaque means it did not.
+ */
+function rendersAlpha(video: HTMLVideoElement) {
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = 16;
+    canvas.height = 16;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) return true; // cannot tell, so leave the video alone
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // The wordmark sits in the middle of the frame, so a corner is transparent
+    // whenever alpha is being honoured.
+    return context.getImageData(0, 0, 1, 1).data[3] < 250;
+  } catch {
+    return true; // same-origin should hold, but never break the hero over this
+  }
+}
+
+/**
  * The animated wordmark, played as a plain <video>.
  *
  * A transparent VP9 WebM, so no background, poster colour or wrapper styling
@@ -53,35 +79,57 @@ export function WordmarkAnimation({
   className = "",
 }: {
   src: string;
-  /** Read out in place of the animation, and what the heading says to crawlers. */
+  /** Read out in place of the animation, and shown if alpha is unsupported. */
   label: string;
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [alphaBroken, setAlphaBroken] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
 
+    const check = () => {
+      if (rendersAlpha(video)) return;
+      video.pause();
+      setAlphaBroken(true);
+    };
+
+    const whenReady = (run: () => void) => {
+      if (video.readyState >= 2) run();
+      else video.addEventListener("loadeddata", run, { once: true });
+      return () => video.removeEventListener("loadeddata", run);
+    };
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // Nudging currentTime forces the first frame to paint without playing.
-      const showFirstFrame = () => {
+      return whenReady(() => {
+        // Nudging currentTime forces the first frame to paint without playing.
         try {
           video.currentTime = 0;
         } catch {
           /* seeking before metadata is fine to ignore */
         }
-      };
-      if (video.readyState >= 2) showFirstFrame();
-      else video.addEventListener("loadeddata", showFirstFrame, { once: true });
-      return;
+        check();
+      });
     }
 
     video.loop = true;
     // Autoplay can still be refused -- low power mode, say. The first frame
     // stands in, which is the same thing reduced-motion visitors see.
     void video.play().catch(() => {});
+    return whenReady(check);
   }, []);
+
+  // Falls back to the name as type: better a wordmark in the site's own
+  // typeface than a black rectangle where the animation should be.
+  if (alphaBroken) {
+    return (
+      <span className={`text-display mx-auto block max-w-[16ch] text-balance ${className}`}>
+        {label}
+      </span>
+    );
+  }
 
   return (
     <span
