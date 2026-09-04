@@ -90,7 +90,7 @@ export function PhotoCarousel({ photos }: { photos: AboutPhoto[] }) {
             Photo {index + 1} of {count}
           </p>
 
-          <ul className="mt-3 flex flex-wrap gap-2">
+          <ul className="mt-3 flex flex-wrap justify-center gap-2">
             {photos.map((photo, i) => (
               <li key={photo.src}>
                 <button

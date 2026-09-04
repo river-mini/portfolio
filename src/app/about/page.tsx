@@ -10,38 +10,50 @@ export const metadata: Metadata = {
 };
 
 /**
- * Photos for the click-through set, in order. Drop more files into
- * /public/images/about/ and add a row -- the arrows and thumbnail strip appear
- * on their own as soon as there is more than one.
+ * Photos for the click-through set, in order. Hosted on Vercel Blob rather
+ * than committed. The arrows and thumbnail strip appear on their own as soon
+ * as there is more than one.
+ *
+ * External URLs render through a plain <img> (see SmartImage), so these are
+ * served at full size -- keep exports web-sized rather than straight off a
+ * phone.
  */
 const PHOTOS: AboutPhoto[] = [
-  { src: "/images/portrait.png", alt: "Cindy Truong" },
-  // Filler until the real photos land -- swap the src and alt on each row.
-  { src: "/images/about/about-1.png", alt: "Filler photo" },
-  { src: "/images/about/about-2.png", alt: "Filler photo" },
-  { src: "/images/about/about-3.png", alt: "Filler photo" },
-  { src: "/images/about/about-4.png", alt: "Filler photo" },
+  { src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/me%20pics/me%203.jpg", alt: "Cindy Truong" },
+  { src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/me%20pics/IMG_9907.jpg", alt: "Cindy Truong" },
+  { src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/me%20pics/me%202.jpg", alt: "Cindy Truong" },
+  { src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/me%20pics/me%204.jpg", alt: "Cindy Truong" },
+  { src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/me%20pics/me.jpg", alt: "Cindy Truong" },
+  // Still only uploaded as HEIC, which renders in Safari alone:
+  //   me%20pics/IMG_6081.HEIC
+  // Re-export as JPEG and add a row here.
 ];
 
 /**
  * Grouped credentials. An entry without a `period` renders as a continuation
  * line under the one above it, for things like a degree under its school.
- *
- * Placeholder rows -- replace the strings in place.
  */
 const CREDENTIALS = [
   {
-    label: "Previously",
+    label: "Experience",
     entries: [
-      { detail: "Add a role here.", period: "Year" },
-      { detail: "Add a role here.", period: "Year" },
+      { detail: "Design Assistant, UT LAITS", period: "Jun 2026 — Present" },
+      {
+        detail: "UX Design Fellow, Longhorn Developers",
+        period: "Aug 2025 — Present",
+      },
+      {
+        detail: "STEM Instructor & Intern, Lavner Education",
+        period: "Apr — Aug 2026",
+      },
     ],
   },
   {
     label: "Education",
     entries: [
-      { detail: "Add a school here.", period: "Years" },
-      { detail: "Add a degree here." },
+      { detail: "The University of Texas at Austin", period: "2024 — 2028" },
+      { detail: "Informatics (UI/UX Design)" },
+      { detail: "Design Strategies BDP" },
     ],
   },
 ] as const;
@@ -56,10 +68,6 @@ function RuledHeading({ id, children }: { id: string; children: ReactNode }) {
   );
 }
 
-/**
- * All copy below is placeholder. Replace the strings in place -- the layout
- * adapts to however much text each section ends up holding.
- */
 export default function AboutPage() {
   return (
     <div className="pt-12 pb-(--section-gap) md:pt-16">
@@ -77,12 +85,27 @@ export default function AboutPage() {
           <div className="space-y-14 md:col-span-7 md:col-start-6">
             <section aria-labelledby="bio-heading">
               <RuledHeading id="bio-heading">
-                <span lang="vi">Xin chào!</span> I&apos;m Cindy Truong
+                <span lang="vi">Xin chào!</span> I’m Cindy Truong
               </RuledHeading>
 
               <div className="text-body-lg text-muted mt-6 max-w-[58ch] space-y-5">
-                <p>Biography placeholder.</p>
-                <p>Biography placeholder.</p>
+                <p>
+                  I’m a Vietnamese-American designer developing my craft at The
+                  University of Texas at Austin, where I’m getting a BSA in
+                  Informatics (Concentration in UI/UX Design), a Design
+                  Strategies Bridging Discipline Program certification, and a
+                  background in coding (Java, Python, and HTML). I’m driven to
+                  explore as many experiences as I can by blending creativity
+                  with human-centered values, whether it’s making eye-catching
+                  edits and motion graphics, building user interfaces, gaining
+                  industry experience, or creating whimsical graphics.
+                </p>
+                <p>
+                  Outside of design, I am obsessed with matcha, food, cats, and
+                  watching sitcoms! Right now, I am watching Modern Family when
+                  I’m cooking or doing chores, and I’m having a bunch of good
+                  laughs ꉂ(˵˃ ᗜ ˂˵)
+                </p>
               </div>
             </section>
 
