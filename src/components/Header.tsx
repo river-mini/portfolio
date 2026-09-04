@@ -12,6 +12,7 @@ import { WorkLink } from "./WorkLink";
  */
 const NAV_LINKS = [
   { label: "Work", href: "/#work", external: false, hash: true },
+  { label: "Playground", href: "/playground", external: false, hash: false },
   { label: "About", href: "/about", external: false, hash: false },
   // Drop the real PDF at public/resume.pdf to replace the placeholder.
   { label: "Resume", href: "/resume.pdf", external: true, hash: false },

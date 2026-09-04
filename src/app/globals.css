@@ -94,6 +94,15 @@
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -182,6 +191,12 @@
     max-width: var(--page-max);
     margin-inline: auto;
     padding-inline: var(--page-gutter);
+  }
+
+  /* Playground lightbox: the page behind washes in while the clicked tile
+     flies to the middle. Short, so it is under way before the tile lands. */
+  .lightbox-enter {
+    animation: fade-in 220ms var(--ease-standard) both;
   }
 
   /* Landing animation for the secondary pages: fade in and rise, the same

@@ -66,6 +66,19 @@ export function scrollToElement(element: HTMLElement, offset?: number) {
 }
 
 /**
+ * Freezes the page behind an overlay.
+ *
+ * Lenis drives scrolling from its own loop, so hiding overflow alone does not
+ * stop it -- it has to be told. Both are set: the first for Lenis, the second
+ * for the native scrollbar when Lenis is not running at all.
+ */
+export function setScrollLocked(locked: boolean) {
+  if (locked) window.__lenis?.stop();
+  else window.__lenis?.start();
+  document.documentElement.style.overflow = locked ? "hidden" : "";
+}
+
+/**
  * Inertial scrolling: the page keeps gliding after the wheel stops and eases
  * to a halt rather than cutting dead.
  *
