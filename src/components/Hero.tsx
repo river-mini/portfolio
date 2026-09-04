@@ -1,4 +1,5 @@
 import { Container } from "./Container";
+import { WordmarkAnimation } from "./WordmarkAnimation";
 import { WorkLink } from "./WorkLink";
 
 /**
@@ -11,7 +12,7 @@ import { WorkLink } from "./WorkLink";
  */
 export function Hero() {
   return (
-    <section className="flex min-h-[calc(100svh-4rem)] items-center py-20 md:min-h-[calc(100svh-5rem)]">
+    <section className="flex min-h-[calc(100svh-4rem)] items-center py-10 md:min-h-[calc(100svh-5rem)]">
       {/* Without JavaScript the intro never signals, so unhide the lines. */}
       <noscript>
         <style>{".hero-line{opacity:1}"}</style>
@@ -22,11 +23,14 @@ export function Hero() {
           UI/UX · Motion · Product · Graphic
         </p>
 
-        <h1
-          className="hero-line text-display mx-auto mt-8 max-w-[16ch] text-balance"
-          style={{ animationDelay: "110ms" }}
-        >
-          Hi, I&apos;m Cindy!
+        {/* The animated wordmark stands in for the heading text. It keeps the
+            h1 so the page still has one, with the name available to screen
+            readers and crawlers inside the component. */}
+        <h1 className="hero-line mt-8" style={{ animationDelay: "110ms" }}>
+          <WordmarkAnimation
+            src="/animations/CindyWaterMark.webm"
+            label="Cindy Truong"
+          />
         </h1>
 
         <p
@@ -36,7 +40,7 @@ export function Hero() {
           I craft playful and thoughtful experiences with emotional resonance!
         </p>
 
-        <div className="hero-line mt-14" style={{ animationDelay: "330ms" }}>
+        <div className="hero-line mt-4" style={{ animationDelay: "330ms" }}>
           <WorkLink className="nav-link scroll-cue text-meta text-muted hover:text-ink inline-block">
             Check out my work
             <span aria-hidden="true" className="scroll-cue__arrow ml-2">↓</span>
