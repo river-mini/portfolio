@@ -85,6 +85,319 @@ const PLACEHOLDER_MEDIA = "/images/projects/project-1-wide.png";
 
 /** Per-slug overrides. Projects without an entry fall back to the outline. */
 const caseStudies: Record<string, CaseStudy> = {
+  "sweethearts-x-barbie": {
+    sections: [
+      {
+        id: "tldr",
+        heading: "TL;DR",
+        blocks: [
+          // Appendix: final-ad.mp4, 1920x1080. Upload to Blob and set
+          // kind: "video" with the public URL.
+          {
+            type: "media",
+            media: {
+              src: PLACEHOLDER_MEDIA,
+              alt: "The finished Sweethearts x Barbie spot",
+              caption:
+                "Unaffiliated student concept. Sweethearts and Barbie are trademarks of their respective owners.",
+            },
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "For PR 339K Digital Graphics Communication, we were asked to invent a Sweethearts collaboration with a brand of our choice. I paired Sweethearts with Barbie and built a BFF campaign — candy hearts carrying friendship messages instead of romantic ones — then animated it so the hearts spill from the box alongside kinetic typography.",
+            ],
+          },
+          {
+            type: "factSheet",
+            items: [
+              { label: "Role", value: "Motion Designer — concept, visual design, animation" },
+              { label: "Timeline", value: "Spring 2026" },
+              { label: "Team", value: "Solo" },
+              { label: "Tools", value: "After Effects" },
+              { label: "Context", value: "Motion · Solo · Academic · Spring 2026" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "background",
+        heading: "Background",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "Sweethearts is a Valentine’s product with sixty years of romantic shorthand printed on it. Barbie has one of the most recognizable visual identities in the world, and after 2023, a specific cultural tone attached to it.",
+              "The brief was open: pick a brand, make the collaboration make sense. I was interested in what the two had in common beyond pink.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Two loud brands, and neither can swallow the other",
+            paragraphs: [
+              "A collaboration fails in one of two directions. Lean too hard into Barbie and it is a Barbie ad with candy in it. Lean too hard into Sweethearts and the Barbie half is just a colour palette.",
+              "There was also a content question. Sweethearts’ entire vocabulary is romantic — and Barbie’s most durable idea is not romance, it is friendship. The collaboration only had a reason to exist if the candy said something different than it usually does.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "process",
+        heading: "Process",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "I built the campaign around a custom Sweethearts box filled with Barbie-inspired BFF messages. The messages carry the concept: the packaging is unmistakably Sweethearts, the palette and copy are unmistakably Barbie, and the two meet on the hearts themselves.",
+            ],
+          },
+          // Appendix: static-comp.png, then heart-messages.png.
+          {
+            type: "mediaPair",
+            media: [
+              { src: PLACEHOLDER_MEDIA, alt: "The static composition", caption: "The static composition" },
+              { src: PLACEHOLDER_MEDIA, alt: "Close-up of the hearts and their copy", caption: "The hearts and their copy" },
+            ],
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "For the brand systems, I kept Sweethearts’ packaging structure and pastel base intact and let Barbie enter through colour, type, and voice, so neither identity reads as a skin applied to the other.",
+            ],
+          },
+          // Appendix: brand-exploration.png.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "Colour and type exploration" },
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "Then I took it out of static layout and into After Effects. Candy hearts spill from the box while the typography animates around them, and I tuned the timing so the piece feels energetic without pulling focus off the product.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "final-product",
+        heading: "Final product",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The finished spot combines Sweethearts packaging with Barbie’s palette, messaging, and motion. Falling hearts and animated type turn a conventional product ad into something with pacing and personality — nostalgic, playful, and about friendship rather than romance.",
+            ],
+          },
+          // Appendix: final-ad.mp4 large, then frame-1/2/3.png as a 3-up.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "The finished spot" },
+          },
+          {
+            type: "mediaPair",
+            media: [
+              { src: PLACEHOLDER_MEDIA, alt: "Frame from the spot" },
+              { src: PLACEHOLDER_MEDIA, alt: "Frame from the spot" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "status",
+        heading: "Status",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "Completed as the final assignment for PR 339K: Digital Graphics Communication, Spring 2026.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "reflection",
+        heading: "Reflection",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The useful lesson was that a brand collaboration has to say something. Combining two visual identities is a styling exercise; deciding what the pairing means is the design work, and the BFF angle is what made the two brands belong in the same frame.",
+              "The second was about motion as argument rather than decoration. Animating the hearts spilling out is not ornament — it is the moment the product delivers its message, and pacing it correctly was most of the work.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "fintastic-shack": {
+    sections: [
+      {
+        id: "tldr",
+        heading: "TL;DR",
+        blocks: [
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/fintastic/lockup.png",
+              alt: "The Fintastic Shack lockup",
+              aspect: "842 / 595",
+            },
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "A complete logo lockup for The Fintastic Shack, a new family-owned seafood restaurant. Rather than setting a fish icon beside the name, I built the mark into the name — a custom A that serves as the A in both Fintastic and Shack, reads as a fish, and hides a diner in a bib in its negative space.",
+            ],
+          },
+          {
+            type: "factSheet",
+            items: [
+              { label: "Role", value: "Brand Designer — concept, logo design, visual identity" },
+              { label: "Timeline", value: "August 2026" },
+              { label: "Team", value: "Solo" },
+              { label: "Tools", value: "Illustrator, Photoshop, hand sketching" },
+              { label: "Context", value: "Branding · Solo · Academic" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "background",
+        heading: "Background",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The Fintastic Shack is a newly founded, family-owned seafood restaurant. The brief called for both a brandmark and a wordmark, combined into one cohesive lockup.",
+              "The family was described as friendly, fun, and fond of puns — the restaurant’s name is already a joke. The identity needed to be in on it without becoming a novelty.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Playful enough to match them, legible enough to be a sign",
+            paragraphs: [
+              "Two pressures pulled against each other. The personality brief pushed toward character, illustration, and visual jokes. The practical reality is that this mark has to work on signage read from a moving car, at small sizes, and in a single colour.",
+              "Most attempts at a playful restaurant logo solve this by bolting a cute icon onto a clean wordmark, which reads as two designs sharing a space. I wanted the joke to live inside the typography, where it could not be separated from the name.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "process",
+        heading: "Process",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "I started on paper, working through fish forms, letterforms, and ways a symbol could sit against the name. Several early directions were literal — a fish wearing a hat, a fish as a standalone icon. They were charming and they were decoration.",
+            ],
+          },
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/fintastic/sketches.jpg",
+              alt: "Hand sketches exploring fish forms and letterforms",
+              caption: "Early directions on paper",
+            },
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "The turn came from the name’s own structure. Stack FINTASTIC over SHACK and the two A’s land nearly on top of each other. One letterform could serve both words — which meant the mark would be structurally load-bearing rather than applied.",
+              "The custom A is fish-shaped, with tail fins forming the apex and a net texture across the body. Its counter reads as a person seated in a bib, and the small red shape works as either that bib or the fish’s tongue depending on how you look at it. The ambiguity is the point: it is a joke you find on the second look, not one shouted on the first.",
+            ],
+          },
+          // Appendix: brandmark-annotated.png -- callouts showing the readings.
+          {
+            type: "mediaPair",
+            media: [
+              { src: "/images/projects/fintastic/lockup-small.png", alt: "The lockup at small size", caption: "The mark, isolated" },
+              { src: PLACEHOLDER_MEDIA, alt: "Callouts showing the fish, the diner and the bib", caption: "The readings hiding in the counter" },
+            ],
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "From there it was proportion work — tuning the surrounding letterforms so a custom character could hold the centre without the name becoming hard to read. Layered blues carry water and freshness; the single red accent is the only warm element in the system, which is what draws the eye to the detail that carries the joke.",
+            ],
+          },
+          // Appendix: color-exploration.png.
+          {
+            type: "media",
+            media: { src: PLACEHOLDER_MEDIA, alt: "Colour exploration for the lockup" },
+          },
+        ],
+      },
+      {
+        id: "final-product",
+        heading: "Final product",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The lockup is a clean two-line wordmark with a custom letterform at its centre, doing the work a separate icon usually does.",
+            ],
+          },
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/fintastic/lockup.png",
+              alt: "The finished Fintastic Shack lockup",
+              aspect: "842 / 595",
+            },
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "It holds up under the tests that matter for a restaurant identity: it survives in a single colour, stays legible at small sizes, and reads correctly on signage.",
+            ],
+          },
+          // Appendix: lockup-black.png -- the single-colour version.
+          {
+            type: "mediaPair",
+            media: [
+              { src: PLACEHOLDER_MEDIA, alt: "The lockup in a single colour", caption: "Holds up in a single colour" },
+              { src: "/images/projects/fintastic/icon-small.png", alt: "The mark at favicon size", caption: "Legible at favicon scale" },
+            ],
+          },
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/fintastic/signage.jpg",
+              alt: "The lockup applied to restaurant signage",
+              caption: "Applied to restaurant signage",
+            },
+          },
+        ],
+      },
+      {
+        id: "status",
+        heading: "Status",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "Completed August 2026 as an academic branding project. Deliverables: concept sketches, standalone brandmark, refined lockup, colour variations, and a signage mockup.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "reflection",
+        heading: "Reflection",
+        blocks: [
+          {
+            type: "text",
+            paragraphs: [
+              "The thing I underestimated was how much refinement a simple mark takes. The final A went through many more passes than the sketch suggested it would, almost all of them small — a few degrees of angle, a slightly different counter, a red shape moved two points.",
+              "The larger lesson was where to put the personality. My early directions kept the wordmark clean and put the fun beside it, which is the safe move and also the forgettable one. Building the joke into a letterform meant it could not be removed without breaking the name — and that constraint made the mark better, because it forced the playful idea to also be structurally correct.",
+              "Working between sketches, Illustrator, and Photoshop across the project also made me substantially faster in both programs, which I have carried into everything since.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
   "animated-intro": {
     sections: [
       {

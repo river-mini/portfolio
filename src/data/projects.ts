@@ -37,13 +37,25 @@ export const projects: Project[] = [
       "A 30-second animated course intro that walks you through a gallery and is cheeky on the way out.",
   },
   {
+    slug: "fintastic-shack",
+    title: "Fintastic Shack",
+    year: "Aug 2026",
+    categories: ["Graphic Design"],
+    thumbnail: "/images/projects/fintastic/lockup.png",
+    thumbnailFit: "contain",
+    heroMedia: "/images/projects/fintastic/signage.jpg",
+    shortDescription:
+      "A seafood logo where one letter does double duty across two words.",
+  },
+  {
     slug: "sweethearts-x-barbie",
     title: "Sweethearts x Barbie Ad",
     year: "Mar 2026",
     categories: ["Motion Design"],
     thumbnail: "/images/projects/project-3.png",
     heroMedia: "/images/projects/project-3-wide.png",
-    shortDescription: "One-line description of the project goes here.",
+    shortDescription:
+      "A Valentine’s campaign about friendship instead of romance.",
   },
   {
     slug: "christmas-invitation",
