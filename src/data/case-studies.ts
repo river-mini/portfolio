@@ -91,13 +91,12 @@ const caseStudies: Record<string, CaseStudy> = {
         id: "tldr",
         heading: "TL;DR",
         blocks: [
-          // Appendix: final-ad.mp4, 1920x1080. Upload to Blob and set
-          // kind: "video" with the public URL.
           {
             type: "media",
             media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "The finished Sweethearts x Barbie spot",
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/cutdownSweethearts.mp4",
+              kind: "video",
+              alt: "A cut-down of the Sweethearts x Barbie spot",
               caption:
                 "Unaffiliated student concept. Sweethearts and Barbie are trademarks of their respective owners.",
             },
@@ -135,7 +134,7 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             heading: "Two loud brands, and neither can swallow the other",
             paragraphs: [
-              "A collaboration fails in one of two directions. Lean too hard into Barbie and it is a Barbie ad with candy in it. Lean too hard into Sweethearts and the Barbie half is just a colour palette.",
+              "A collaboration fails in one of two directions. Lean too hard into Barbie and it is a Barbie ad with candy in it. Lean too hard into Sweethearts and the Barbie half is just a color palette.",
               "There was also a content question. Sweethearts’ entire vocabulary is romantic — and Barbie’s most durable idea is not romance, it is friendship. The collaboration only had a reason to exist if the candy said something different than it usually does.",
             ],
           },
@@ -151,29 +150,43 @@ const caseStudies: Record<string, CaseStudy> = {
               "I built the campaign around a custom Sweethearts box filled with Barbie-inspired BFF messages. The messages carry the concept: the packaging is unmistakably Sweethearts, the palette and copy are unmistakably Barbie, and the two meet on the hearts themselves.",
             ],
           },
-          // Appendix: static-comp.png, then heart-messages.png.
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "The static composition", caption: "The static composition" },
-              { src: PLACEHOLDER_MEDIA, alt: "Close-up of the hearts and their copy", caption: "The hearts and their copy" },
-            ],
+            type: "media",
+            media: {
+              src: "/images/projects/sweethearts/box.png",
+              alt: "The custom Sweethearts x Barbie BFF Edition box",
+              caption: "The custom box, carrying both identities at once",
+              fit: "contain",
+            },
+          },
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/sweethearts/hearts.png",
+              alt: "Candy hearts reading KAWAII, 4LIFER, JUST A GIRL, BEST FRIENDS, MY INSPO and I LUV U GIRL",
+              caption: "The BFF messages the campaign turns on",
+              fit: "contain",
+            },
           },
           {
             type: "text",
             paragraphs: [
-              "For the brand systems, I kept Sweethearts’ packaging structure and pastel base intact and let Barbie enter through colour, type, and voice, so neither identity reads as a skin applied to the other.",
+              "For the brand systems, I kept Sweethearts’ packaging structure and pastel base intact and let Barbie enter through color, type, and voice, so neither identity reads as a skin applied to the other.",
             ],
-          },
-          // Appendix: brand-exploration.png.
-          {
-            type: "media",
-            media: { src: PLACEHOLDER_MEDIA, alt: "Colour and type exploration" },
           },
           {
             type: "text",
             paragraphs: [
               "Then I took it out of static layout and into After Effects. Candy hearts spill from the box while the typography animates around them, and I tuned the timing so the piece feels energetic without pulling focus off the product.",
+            ],
+          },
+          {
+            type: "text",
+            heading: "Sound, Story & Motion",
+            paragraphs: [
+              "Before the animation begins, I used a short scene from Barbie: Life in the Dreamhouse where Barbie’s friends argue over who her best friend is. That setup directly connects to the BFF theme of the Sweethearts concept and gives the ad a playful narrative before the product is introduced.",
+              "From there, the animation transitions into the Sweethearts × Barbie visual, with the hearts falling from the box and the typography coming to life. I paired it with “Speed Drive” by Charli XCX, a song made for the Barbie movie, to keep the audio connected to the brand world as well. Its fast pace and energetic sound helped make the ad feel more exciting, outgoing, and playful.",
+              "Together, the opening clip, music, and motion helped the piece feel less like a standalone animation and more like a complete campaign moment built around Barbie’s friendship theme.",
             ],
           },
         ],
@@ -188,17 +201,38 @@ const caseStudies: Record<string, CaseStudy> = {
               "The finished spot combines Sweethearts packaging with Barbie’s palette, messaging, and motion. Falling hearts and animated type turn a conventional product ad into something with pacing and personality — nostalgic, playful, and about friendship rather than romance.",
             ],
           },
-          // Appendix: final-ad.mp4 large, then frame-1/2/3.png as a 3-up.
           {
             type: "media",
-            media: { src: PLACEHOLDER_MEDIA, alt: "The finished spot" },
+            media: {
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/sweethrts%20ad.mp4",
+              kind: "video",
+              alt: "The finished Sweethearts x Barbie spot",
+            },
           },
           {
             type: "mediaPair",
             media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Frame from the spot" },
-              { src: PLACEHOLDER_MEDIA, alt: "Frame from the spot" },
+              {
+                src: "/images/projects/sweethearts/spot-frame-2.png",
+                alt: "Frame from the spot: the box on screen",
+                caption: "The box, mid-spot",
+                fit: "contain",
+              },
+              {
+                src: "/images/projects/sweethearts/spot-frame-1.png",
+                alt: "Frame from the spot: candy hearts spilling from the box",
+                caption: "The hearts spilling out",
+                fit: "contain",
+              },
             ],
+          },
+          {
+            type: "media",
+            media: {
+              src: "/images/projects/sweethearts/cover.jpg",
+              alt: "The finished packaging with the candy hearts",
+              caption: "The finished packaging and its BFF messages",
+            },
           },
         ],
       },
@@ -238,15 +272,15 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "media",
             media: {
-              src: "/images/projects/fintastic/lockup.png",
+              src: "/images/projects/fintastic/wordmark.png",
               alt: "The Fintastic Shack lockup",
-              aspect: "842 / 595",
+              fit: "contain",
             },
           },
           {
             type: "text",
             paragraphs: [
-              "A complete logo lockup for The Fintastic Shack, a new family-owned seafood restaurant. Rather than setting a fish icon beside the name, I built the mark into the name — a custom A that serves as the A in both Fintastic and Shack, reads as a fish, and hides a diner in a bib in its negative space.",
+              "A complete logo lockup for The Fintastic Shack, a new family-owned seafood restaurant. Rather than setting a fish icon beside the name, I built the mark into the name! A custom ‘A’ that serves as the ‘A’ in both Fintastic and Shack, reads as a fish, and hides a diner in a bib in its negative space.",
             ],
           },
           {
@@ -269,14 +303,14 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             paragraphs: [
               "The Fintastic Shack is a newly founded, family-owned seafood restaurant. The brief called for both a brandmark and a wordmark, combined into one cohesive lockup.",
-              "The family was described as friendly, fun, and fond of puns — the restaurant’s name is already a joke. The identity needed to be in on it without becoming a novelty.",
+              "The family was described as friendly, fun, and fond of puns, and even the restaurant’s name reflects that personality. The identity needed to feel playful without becoming overly gimmicky.",
             ],
           },
           {
             type: "text",
-            heading: "Playful enough to match them, legible enough to be a sign",
+            heading: "Playful, but still practical",
             paragraphs: [
-              "Two pressures pulled against each other. The personality brief pushed toward character, illustration, and visual jokes. The practical reality is that this mark has to work on signage read from a moving car, at small sizes, and in a single colour.",
+              "I wanted the logo to reflect the family’s fun personality without sacrificing clarity. The design needed enough character to feel memorable, while still being simple and readable enough to work on signage, at small sizes, and in a single color.",
               "Most attempts at a playful restaurant logo solve this by bolting a cute icon onto a clean wordmark, which reads as two designs sharing a space. I wanted the joke to live inside the typography, where it could not be separated from the name.",
             ],
           },
@@ -289,7 +323,7 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "text",
             paragraphs: [
-              "I started on paper, working through fish forms, letterforms, and ways a symbol could sit against the name. Several early directions were literal — a fish wearing a hat, a fish as a standalone icon. They were charming and they were decoration.",
+              "I started on paper, working through fish forms, letterforms, and ways a symbol could sit against the name. I was being pretty literal with the early iterations. For example, a fish wearing a hat and a fish as a standalone icon. However, they felt more decorative than integrated into the identity.",
             ],
           },
           {
@@ -301,30 +335,51 @@ const caseStudies: Record<string, CaseStudy> = {
             },
           },
           {
+            type: "media",
+            media: {
+              src: "/images/projects/fintastic/draft-mark.png",
+              alt: "An early direction: the mark drawn as a standalone character",
+              caption:
+                "An early direction, set aside — the mark as a character rather than a letterform",
+              fit: "contain",
+            },
+          },
+          {
             type: "text",
             paragraphs: [
-              "The turn came from the name’s own structure. Stack FINTASTIC over SHACK and the two A’s land nearly on top of each other. One letterform could serve both words — which meant the mark would be structurally load-bearing rather than applied.",
-              "The custom A is fish-shaped, with tail fins forming the apex and a net texture across the body. Its counter reads as a person seated in a bib, and the small red shape works as either that bib or the fish’s tongue depending on how you look at it. The ambiguity is the point: it is a joke you find on the second look, not one shouted on the first.",
+              "I first started out with three brandmark versions in black and white before any color, which kept the early work on silhouette and readability rather than palette.",
             ],
           },
-          // Appendix: brandmark-annotated.png -- callouts showing the readings.
+          {
+            type: "text",
+            paragraphs: [
+              "The idea came from the name itself. When I stacked FINTASTIC over SHACK, the two ‘A’s lined up closely enough that one custom letterform could connect both words. This made the brandmark feel like part of the logo, rather than something added on afterward.",
+              "The custom ‘A’ is fish-shaped, with tail fins forming the apex and a net texture across the body. Its counter reads as a person seated in a bib, and the small red shape works as either that bib or the fish’s tongue depending on how you look at it. The ambiguity is the point: it is a joke you find on the second look, not one shouted on the first.",
+            ],
+          },
+          {
+            type: "text",
+            paragraphs: [
+              "From there, I focused on refining the proportions so the custom letterform could stand out without hurting readability. I also scaled the letters in FINTASTIC from large to small and back to large to subtly suggest the shape of a fish, with the F as the tail and the C as the head.",
+              "Layered blues carry water and freshness; the single red accent is the only warm element in the system, which is what draws the eye to the detail that carries the joke.",
+            ],
+          },
           {
             type: "mediaPair",
             media: [
-              { src: "/images/projects/fintastic/lockup-small.png", alt: "The lockup at small size", caption: "The mark, isolated" },
-              { src: PLACEHOLDER_MEDIA, alt: "Callouts showing the fish, the diner and the bib", caption: "The readings hiding in the counter" },
+              {
+                src: "/images/projects/fintastic/draft-1.png",
+                alt: "The lockup resolved in black and white",
+                caption: "Draft direction: structure resolved in one color",
+                fit: "contain",
+              },
+              {
+                src: "/images/projects/fintastic/draft-2.png",
+                alt: "The lockup with color introduced and the ‘A’ isolated as the focal point",
+                caption: "Draft direction: color introduced, mark isolated as focal point",
+                fit: "contain",
+              },
             ],
-          },
-          {
-            type: "text",
-            paragraphs: [
-              "From there it was proportion work — tuning the surrounding letterforms so a custom character could hold the centre without the name becoming hard to read. Layered blues carry water and freshness; the single red accent is the only warm element in the system, which is what draws the eye to the detail that carries the joke.",
-            ],
-          },
-          // Appendix: color-exploration.png.
-          {
-            type: "media",
-            media: { src: PLACEHOLDER_MEDIA, alt: "Colour exploration for the lockup" },
           },
         ],
       },
@@ -335,31 +390,23 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "text",
             paragraphs: [
-              "The lockup is a clean two-line wordmark with a custom letterform at its centre, doing the work a separate icon usually does.",
+              "The lockup is a clean two-line wordmark with a custom letterform at its center, doing the work a separate icon usually does.",
             ],
           },
           {
-            type: "media",
-            media: {
-              src: "/images/projects/fintastic/lockup.png",
-              alt: "The finished Fintastic Shack lockup",
-              aspect: "842 / 595",
-            },
+            type: "mediaPair",
+            media: [
+              { src: "/images/projects/fintastic/wordmark.png", alt: "The finished Fintastic Shack lockup", caption: "The lockup", fit: "contain" },
+              { src: "/images/projects/fintastic/mark.png", alt: "The custom ‘A’ that anchors the lockup", caption: "The brandmark that carries it", fit: "contain" },
+            ],
           },
           {
             type: "text",
             paragraphs: [
-              "It holds up under the tests that matter for a restaurant identity: it survives in a single colour, stays legible at small sizes, and reads correctly on signage.",
+              "It holds up under the tests that matter for a restaurant identity: it survives in a single color, stays legible at small sizes, and reads correctly on signage.",
             ],
           },
-          // Appendix: lockup-black.png -- the single-colour version.
-          {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "The lockup in a single colour", caption: "Holds up in a single colour" },
-              { src: "/images/projects/fintastic/icon-small.png", alt: "The mark at favicon size", caption: "Legible at favicon scale" },
-            ],
-          },
+
           {
             type: "media",
             media: {
@@ -377,7 +424,7 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "text",
             paragraphs: [
-              "Completed August 2026 as an academic branding project. Deliverables: concept sketches, standalone brandmark, refined lockup, colour variations, and a signage mockup.",
+              "Completed August 2026 as an academic branding project. Deliverables: concept sketches, standalone brandmark, refined lockup, color variations, and a signage mockup.",
             ],
           },
         ],
@@ -389,7 +436,7 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "text",
             paragraphs: [
-              "The thing I underestimated was how much refinement a simple mark takes. The final A went through many more passes than the sketch suggested it would, almost all of them small — a few degrees of angle, a slightly different counter, a red shape moved two points.",
+              "The thing I underestimated was how much refinement a simple mark takes. The final ‘A’ went through many more passes than the sketch suggested it would, almost all of them small — a few degrees of angle, a slightly different counter, a red shape moved two points.",
               "The larger lesson was where to put the personality. My early directions kept the wordmark clean and put the fun beside it, which is the safe move and also the forgettable one. Building the joke into a letterform meant it could not be removed without breaking the name — and that constraint made the mark better, because it forced the playful idea to also be structurally correct.",
               "Working between sketches, Illustrator, and Photoshop across the project also made me substantially faster in both programs, which I have carried into everything since.",
             ],
@@ -741,16 +788,16 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "mediaPair",
             media: [
               { src: PLACEHOLDER_MEDIA, alt: "Lo-fi grid of unlabeled interest tiles", caption: "Before — an unlabeled tile grid" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi categorised, searchable interest tags", caption: "After — categorised and searchable, with a send-it-in fallback" },
+              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi categorized, searchable interest tags", caption: "After — categorized and searchable, with a send-it-in fallback" },
             ],
           },
           // Appendix: left = lo-fi_onboarding.png, the four preset Bevos.
-          // Right = 1788297449092_image.png frame 1 plus one customiser frame.
+          // Right = 1788297449092_image.png frame 1 plus one customizer frame.
           {
             type: "mediaPair",
             media: [
               { src: PLACEHOLDER_MEDIA, alt: "Lo-fi avatar selection with four preset options", caption: "Before — pick one of four to continue" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi avatar screen offering upload, customise or skip", caption: "After — upload, customise, or skip" },
+              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi avatar screen offering upload, customize or skip", caption: "After — upload, customize, or skip" },
             ],
           },
           {
@@ -862,12 +909,12 @@ const caseStudies: Record<string, CaseStudy> = {
             ],
           },
           // Appendix: one wide image exported fresh from Figma — type scale,
-          // colour ramp, event card anatomy, component library.
+          // color ramp, event card anatomy, component library.
           {
             type: "media",
             media: {
               src: PLACEHOLDER_MEDIA,
-              alt: "Type scale, colour ramp, event card anatomy and component library",
+              alt: "Type scale, color ramp, event card anatomy and component library",
               aspect: "16 / 9",
             },
           },

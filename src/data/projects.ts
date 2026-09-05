@@ -41,9 +41,9 @@ export const projects: Project[] = [
     title: "Fintastic Shack",
     year: "Aug 2026",
     categories: ["Graphic Design"],
-    thumbnail: "/images/projects/fintastic/lockup.png",
-    thumbnailFit: "contain",
+    thumbnail: "/images/projects/fintastic/signage.jpg",
     heroMedia: "/images/projects/fintastic/signage.jpg",
+    heroAspect: "3 / 2",
     shortDescription:
       "A seafood logo where one letter does double duty across two words.",
   },
@@ -52,19 +52,11 @@ export const projects: Project[] = [
     title: "Sweethearts x Barbie Ad",
     year: "Mar 2026",
     categories: ["Motion Design"],
-    thumbnail: "/images/projects/project-3.png",
-    heroMedia: "/images/projects/project-3-wide.png",
+    thumbnail: "/images/projects/sweethearts/cover.jpg",
+    heroMedia: "/images/projects/sweethearts/cover.jpg",
+    heroAspect: "1080 / 607",
     shortDescription:
       "A Valentine’s campaign about friendship instead of romance.",
-  },
-  {
-    slug: "christmas-invitation",
-    title: "Christmas Invitation",
-    year: "Dec 2025",
-    categories: ["Graphic Design"],
-    thumbnail: "/images/projects/project-4.png",
-    heroMedia: "/images/projects/project-4-wide.png",
-    shortDescription: "One-line description of the project goes here.",
   },
 ];
 
