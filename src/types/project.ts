@@ -42,4 +42,10 @@ export type Project = {
   featured?: boolean;
   /** Case-study hero media. Falls back to `thumbnail` when omitted. */
   heroMedia?: string;
+  /**
+   * CSS aspect-ratio for the case-study hero, e.g. "3 / 2". Set it to the
+   * image own ratio when the default 2:1 crop would cut something that
+   * matters -- the frame then matches the artwork instead of trimming it.
+   */
+  heroAspect?: string;
 };

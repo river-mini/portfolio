@@ -83,13 +83,19 @@ export default async function ProjectPage({
             scaled in from the content width. Mobile stays at 3:2 --
             a 2:1 strip on a phone is a sliver. */}
         <div
-          className="page-rise rounded-media bg-bg-raised relative mx-auto mt-8 aspect-[3/2] w-full max-w-4xl overflow-hidden md:mt-12 md:aspect-[2/1]"
-          style={{ animationDelay: "120ms" }}
+          className="page-rise rounded-media bg-bg-raised relative mx-auto mt-8 aspect-[3/2] w-full max-w-3xl overflow-hidden md:mt-12 md:aspect-[2/1]"
+          // An inline ratio beats the classes at every breakpoint, so a project
+          // that sets one gets it everywhere and the rest keep the responsive
+          // default of 3:2 on mobile, 2:1 above it.
+          style={{
+            animationDelay: "120ms",
+            ...(project.heroAspect ? { aspectRatio: project.heroAspect } : {}),
+          }}
         >
           <SmartImage
             src={heroSrc}
             alt={`${project.title} — hero image`}
-            sizes="(min-width: 896px) 896px, 100vw"
+            sizes="(min-width: 768px) 768px, 100vw"
             className="object-cover"
             priority
           />

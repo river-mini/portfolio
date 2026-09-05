@@ -1,5 +1,20 @@
 import { BlockRenderer } from "./BlockRenderer";
-import type { CaseStudySection as Section } from "@/types/case-study";
+import type { CaseStudyBlock, CaseStudySection as Section } from "@/types/case-study";
+
+/**
+ * Space above a block, given what precedes it.
+ *
+ * Prose that continues prose gets the same gap paragraphs get inside a single
+ * text block, so a run of writing reads at one rhythm however it happens to be
+ * split up in the data. Anything else -- media arriving, or a sub-head opening
+ * a new thought -- gets the full gap, because there a break is the point.
+ */
+function gapBefore(block: CaseStudyBlock, previous: CaseStudyBlock | undefined) {
+  if (!previous) return "";
+  const continuesProse =
+    block.type === "text" && previous.type === "text" && !block.heading;
+  return continuesProse ? "mt-5" : "mt-12";
+}
 
 /**
  * A section of the case-study body. The heading sits above its content rather
@@ -19,9 +34,11 @@ export function CaseStudySection({ section }: { section: Section }) {
         {section.heading}
       </h2>
 
-      <div className="mt-6 space-y-12">
+      <div className="mt-6">
         {section.blocks.map((block, index) => (
-          <BlockRenderer key={index} block={block} />
+          <div key={index} className={gapBefore(block, section.blocks[index - 1])}>
+            <BlockRenderer block={block} />
+          </div>
         ))}
       </div>
     </section>

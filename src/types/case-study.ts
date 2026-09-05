@@ -16,6 +16,12 @@ export type CaseStudyMedia = {
   kind?: "image" | "video";
   /** CSS aspect-ratio value, e.g. "16 / 9". Defaults per block type. */
   aspect?: string;
+  /**
+   * How the media fills its frame. Defaults to "cover", right for photography.
+   * Use "contain" for artwork that must be seen whole -- a logo, a lettermark
+   * -- so every frame can share one ratio without anything being cropped.
+   */
+  fit?: "cover" | "contain";
 };
 
 /** One label/value pair in a fact sheet. Arrays render as stacked lines. */
