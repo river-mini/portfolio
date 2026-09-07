@@ -34,6 +34,12 @@ export type CaseStudyBlock =
   /** `heading` renders above the paragraphs, for a sub-head inside a section. */
   | { type: "text"; heading?: string; paragraphs: string[] }
   | { type: "factSheet"; items: CaseStudyFact[] }
+  /** A bulleted list, for things that read as a set rather than as prose. */
+  | { type: "list"; heading?: string; items: string[] }
+  /** Headline figures: the number large, its label small beneath. */
+  | { type: "stats"; items: { value: string; label: string }[] }
+  /** Two or three pieces of media in a row, stacking on mobile. */
+  | { type: "mediaRow"; media: CaseStudyMedia[] }
   | { type: "media"; media: CaseStudyMedia }
   | { type: "mediaPair"; media: [CaseStudyMedia, CaseStudyMedia] };
 

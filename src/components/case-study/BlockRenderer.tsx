@@ -1,6 +1,9 @@
 import { FactSheet } from "./FactSheet";
+import { ListBlock } from "./ListBlock";
 import { MediaFigure } from "./MediaFigure";
 import { MediaPair } from "./MediaPair";
+import { MediaRow } from "./MediaRow";
+import { StatsBlock } from "./StatsBlock";
 import { TextBlock } from "./TextBlock";
 import type { CaseStudyBlock } from "@/types/case-study";
 
@@ -14,9 +17,15 @@ export function BlockRenderer({ block }: { block: CaseStudyBlock }) {
       return <TextBlock heading={block.heading} paragraphs={block.paragraphs} />;
     case "factSheet":
       return <FactSheet items={block.items} />;
+    case "list":
+      return <ListBlock heading={block.heading} items={block.items} />;
     case "media":
       return <MediaFigure media={block.media} />;
     case "mediaPair":
       return <MediaPair media={block.media} />;
+    case "mediaRow":
+      return <MediaRow media={block.media} />;
+    case "stats":
+      return <StatsBlock items={block.items} />;
   }
 }
