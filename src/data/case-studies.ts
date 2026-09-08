@@ -552,14 +552,14 @@ const caseStudies: Record<string, CaseStudy> = {
               "It worked visually, but once animated, the movement felt repetitive. Testing it early helped me realize the concept worked better as a static design than as motion.",
             ],
           },
-          // Asset checklist: concept-1-rejected.mp4 -- on the blog as
-          // ARH301-Idea-1.mp4. Upload to Blob and set kind: "video".
           {
             type: "media",
             media: {
-              src: PLACEHOLDER_MEDIA,
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/ARH301%20Idea%201.mp4",
+              kind: "video",
               alt: "The first concept, animated",
               caption: "Concept one — set aside after seeing it in motion",
+              aspect: "16 / 9",
             },
           },
           {
@@ -651,14 +651,28 @@ const caseStudies: Record<string, CaseStudy> = {
               "An archway that leads the viewer into the “next” room",
             ],
           },
-          // Asset checklist: detail-gold-frames.png, detail-modern-wall.png
-          // and detail-arch.png, in the same order as the three bullets above.
+          // The gallery's three walls, left to right. Each keeps its own ratio
+          // instead of the row default: the middle wall is square, and a 4:3
+          // crop would take the frames off the top and bottom of it. Squaring
+          // the centre column makes the uneven heights read as symmetry.
           {
             type: "mediaRow",
             media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Gold-framed historical works on the gallery wall" },
-              { src: PLACEHOLDER_MEDIA, alt: "Modern works in simple black frames" },
-              { src: PLACEHOLDER_MEDIA, alt: "The archway leading to the next room" },
+              {
+                src: "/images/projects/arh301/wall-left.jpg",
+                alt: "Left wall — two Dada posters, a photograph of the Entartete Kunst exhibition and a Cubist still life, in simple black frames",
+                aspect: "16 / 10",
+              },
+              {
+                src: "/images/projects/arh301/wall-middle.jpg",
+                alt: "Middle wall — a Kahlo self-portrait, a target painting, an abstract still life and a polka-dotted figure, in gold frames",
+                aspect: "1 / 1",
+              },
+              {
+                src: "/images/projects/arh301/wall-right.jpg",
+                alt: "Right wall — Las Meninas, the Oath of the Horatii, a Monet river scene and a Gauguin, in ornate gold frames",
+                aspect: "16 / 10",
+              },
             ],
           },
         ],
