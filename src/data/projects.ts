@@ -22,7 +22,8 @@ export const projects: Project[] = [
     categories: ["UI/UX", "Motion Design"],
     thumbnail: "/images/projects/longhorn-loop/splash.png",
     thumbnailFit: "contain",
-    heroMedia: "/images/projects/project-1-wide.png",
+    heroMedia: "/images/projects/longhorn-loop/cover.jpg",
+    heroAspect: "3200 / 1706",
     shortDescription:
       "A personalized event board bringing 1,000+ UT orgs’ events into one feed.",
   },

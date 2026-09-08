@@ -452,15 +452,6 @@ const caseStudies: Record<string, CaseStudy> = {
         heading: "TL;DR",
         blocks: [
           {
-            type: "media",
-            media: {
-              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/ARH301-Cushing_intro-NEW.mp4",
-              kind: "video",
-              alt: "The finished ARH 301 animated course intro",
-              aspect: "16 / 9",
-            },
-          },
-          {
             type: "factSheet",
             items: [
               { label: "Role", value: "Design STA — concept, animation, art direction" },
@@ -473,9 +464,8 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             heading: "Thirty seconds of art history, with a wink",
             paragraphs: [
-              "ARH 301 needed a new animated intro that felt scholarly, clever, and a little wacky.",
-              "I developed three concepts, animated two of them, and ultimately created a gallery walkthrough using artwork from the course. The intro ends with a Greek statue using the professor’s eyes to wink at the viewer.",
-              "It was my first project after completing LAITS training and shipped for Fall 2026.",
+              "ARH 301 needed a 30-second animated intro. The brief asked for three things that don’t naturally sit together: scholarly, clever, and wacky. I pitched three concepts, animated two as rough tests, and shipped a gallery walk through the course’s own artwork that ends with the professor’s eyes winking at the camera from inside a Greek statue.",
+              "My first project after training. It shipped for Fall 2026.",
             ],
           },
         ],
@@ -492,15 +482,16 @@ const caseStudies: Record<string, CaseStudy> = {
               "The previous course intro felt more serious than the personality of the new professor, Dr. Cushing. I was given a lot of creative freedom to develop something that better matched both him and the course.",
             ],
           },
-          // Asset checklist: existing-package.png -- export a still from the
-          // existing course graphics.
+          // Filled rather than contained, so no cell carries empty bands. The
+          // two landscape pieces are near enough 16:9 to lose almost nothing;
+          // the portrait backdrop shows its middle.
           {
-            type: "media",
-            media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "Existing ARH 301 course graphics",
-              caption: "The course’s existing graphics package",
-            },
+            type: "mediaRow",
+            media: [
+              { src: "/images/projects/arh301/package-backdrop.jpg", alt: "ARH 301 digital backdrop" },
+              { src: "/images/projects/arh301/package-slides.jpg", alt: "ARH 301 PowerPoint background" },
+              { src: "/images/projects/arh301/package-ta.jpg", alt: "ARH 301 teaching assistant backdrop" },
+            ],
           },
         ],
       },
@@ -599,13 +590,23 @@ const caseStudies: Record<string, CaseStudy> = {
               "For the final transition, the camera passes the statue and moves through an archway into another gallery room, suggesting that the course is just beginning.",
             ],
           },
-          // Asset checklist: statue-david.png and statue-kore.png, exported
-          // from the same camera position so the swap is the only difference.
+          // Both normalised to the same 16:9 crop and size, so the statue is
+          // the only thing that changes between them.
           {
             type: "mediaPair",
             media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Gallery with Michelangelo’s David at center", caption: "Before" },
-              { src: PLACEHOLDER_MEDIA, alt: "Gallery with the Berlin Kore at center", caption: "After" },
+              {
+                src: "/images/projects/arh301/statue-david.jpg",
+                alt: "Gallery with Michelangelo’s David at center",
+                caption: "Before",
+                aspect: "16 / 9",
+              },
+              {
+                src: "/images/projects/arh301/statue-kore.jpg",
+                alt: "Gallery with the Berlin Kore at center",
+                caption: "After",
+                aspect: "16 / 9",
+              },
             ],
           },
         ],
@@ -632,13 +633,13 @@ const caseStudies: Record<string, CaseStudy> = {
               aspect: "16 / 9",
             },
           },
-          // Asset checklist: wink-closeup.png -- export the frame from final.
           {
             type: "media",
             media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "Close-up of the statue winking",
+              src: "/images/projects/arh301/wink.jpg",
+              alt: "Close-up of the statue winking, framed by the archway",
               caption: "Dr. Cushing’s eyes, on the Berlin Kore",
+              aspect: "16 / 9",
             },
           },
           {
@@ -818,13 +819,23 @@ const caseStudies: Record<string, CaseStudy> = {
               "We folded Events into Profile as three filters: Going, Saved, Posted. Four tabs, one mental model, and a profile that finally had a reason to exist beyond a bio.",
             ],
           },
-          // Appendix: left = lo-fi_onboarding.png cropped to the 5-tab bottom
-          // nav. Right = Hifis__4_.png frame 1, Profile with the 4-tab nav.
+          // Both exports are 402x874, so the pair lines up exactly and the
+          // nav is the only thing that differs between them.
           {
             type: "mediaPair",
             media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Lo-fi five-tab bottom navigation", caption: "Before — five tabs" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi profile with Going, Saved and Posted", caption: "After — four tabs, Events folded into Profile" },
+              {
+                src: "/images/projects/longhorn-loop/tabs-before.png",
+                alt: "Lo-fi events list with a five-tab bottom nav: home, explore, create, events, profile",
+                caption: "Before — five tabs",
+                aspect: "402 / 874",
+              },
+              {
+                src: "/images/projects/longhorn-loop/tabs-after.png",
+                alt: "Hi-fi home screen with a four-tab bottom nav: Home, Explore, Create, Profile",
+                caption: "After — four tabs, Events folded into Profile",
+                aspect: "402 / 874",
+              },
             ],
           },
           {
@@ -910,8 +921,8 @@ const caseStudies: Record<string, CaseStudy> = {
               src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/longhorn-loop-sneak-peek",
               kind: "video",
               alt: "Home — the personalized event board",
-              caption: "Layout ideated with the design team; final screen by a teammate.",
-              aspect: "9 / 16",
+              aspect: "16 / 10",
+              fit: "contain",
             },
           },
           {
