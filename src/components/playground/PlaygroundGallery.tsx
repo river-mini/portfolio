@@ -3,9 +3,19 @@
 import { useState } from "react";
 import { Container } from "../Container";
 import { Reveal } from "../Reveal";
-import { SmartImage } from "../SmartImage";
+import { ProjectMedia } from "../ProjectMedia";
 import { PlaygroundLightbox } from "./PlaygroundLightbox";
 import type { PlaygroundItem } from "@/types/playground";
+
+/**
+ * The loop a tile plays while hovered: the lighter cut a piece names, else the
+ * video it opens, so an edit previews itself. A piece that opens as a still has
+ * nothing to play and keeps its thumbnail.
+ */
+function hoverPreviewOf(item: PlaygroundItem): string | undefined {
+  if (item.hoverVideoUrl) return item.hoverVideoUrl;
+  return item.media?.kind === "video" ? item.media.src : undefined;
+}
 
 type Opened = {
   index: number;
@@ -56,15 +66,16 @@ export function PlaygroundGallery({ items }: { items: PlaygroundItem[] }) {
                 }}
                 className="group border-line rounded-card ease-standard hover:border-line-strong hover:shadow-card flex w-full cursor-pointer flex-col border p-3 text-left transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1"
               >
-                <span
-                  data-tile-media
-                  className="rounded-media bg-bg-raised relative block aspect-square w-full overflow-hidden"
-                >
-                  <SmartImage
-                    src={item.thumbnail}
+                {/* A plain wrapper, so the box it measures for the open flight
+                    is the media itself rather than the tile around it. */}
+                <span data-tile-media className="block">
+                  <ProjectMedia
+                    as="span"
+                    thumbnail={item.thumbnail}
+                    videoUrl={hoverPreviewOf(item)}
                     alt={item.title}
+                    aspect="1 / 1"
                     sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="ease-standard object-cover transition-transform duration-400 group-hover:scale-[1.015]"
                   />
                 </span>
 

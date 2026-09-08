@@ -35,6 +35,12 @@ function useHoverPreviewEnabled(): boolean {
 type ProjectMediaProps = {
   thumbnail: string;
   alt: string;
+  /**
+   * Element the media box renders as. A <button> may only hold phrasing
+   * content, so the playground tiles ask for a span; everything else can take
+   * the default. Both are display:block here, so they lay out identically.
+   */
+  as?: "div" | "span";
   /** Externally hosted MP4/WebM. Omit for a thumbnail-only project. */
   videoUrl?: string;
   /** CSS aspect-ratio. Fixed so hovering never shifts the layout. */
@@ -53,6 +59,7 @@ type ProjectMediaProps = {
 export function ProjectMedia({
   thumbnail,
   alt,
+  as: Box = "div",
   videoUrl,
   aspect = "4 / 3",
   sizes = "(min-width: 768px) 50vw, 100vw",
@@ -86,7 +93,7 @@ export function ProjectMedia({
     }
   }, [hovered, mounted]);
 
-  const handleEnter = (event: ReactPointerEvent<HTMLDivElement>) => {
+  const handleEnter = (event: ReactPointerEvent<HTMLElement>) => {
     if (!canPreview || event.pointerType === "touch") return;
     setMounted(true);
     setHovered(true);
@@ -98,8 +105,8 @@ export function ProjectMedia({
   };
 
   return (
-    <div
-      className="rounded-media bg-bg-raised relative w-full overflow-hidden"
+    <Box
+      className="rounded-media bg-bg-raised relative block w-full overflow-hidden"
       style={{ aspectRatio: aspect }}
       onPointerEnter={handleEnter}
       onPointerLeave={handleLeave}
@@ -132,6 +139,6 @@ export function ProjectMedia({
           style={{ opacity: playing ? 1 : 0 }}
         />
       ) : null}
-    </div>
+    </Box>
   );
 }

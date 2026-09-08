@@ -24,6 +24,12 @@ export type PlaygroundItem = {
   categories: ProjectCategory[];
   /** Square crop for the grid. */
   thumbnail: string;
+  /**
+   * Muted loop played while the tile is hovered, on pointer devices. Defaults
+   * to the piece's own video, so an edit previews itself; name a lighter cut
+   * here when the full file is too heavy to start streaming on a hover.
+   */
+  hoverVideoUrl?: string;
   /** What opens when the tile is clicked. Falls back to the thumbnail. */
   media?: PlaygroundMedia;
 };
