@@ -204,7 +204,7 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "media",
             media: {
-              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/sweethrts%20ad.mp4",
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/playground/compressed/sweethearts-ad-compressed.mp4",
               kind: "video",
               alt: "The finished Sweethearts x Barbie spot",
             },
