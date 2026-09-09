@@ -12,14 +12,15 @@ const instrumentSans = Instrument_Sans({
 });
 
 const SITE_NAME = "Cindy Truong";
-const SITE_TITLE = "Cindy Truong — Designer";
+const SITE_TITLE = "Cindy Truong — Product Designer";
 const SITE_DESCRIPTION =
   "Portfolio of Cindy Truong, a multidisciplinary designer working across UI/UX, motion design, and graphic design.";
 
 export const metadata: Metadata = {
-  // Absolute URLs for the OG image are built from this. Update it if the site
-  // moves to a custom domain.
-  metadataBase: new URL("https://cindytruong.vercel.app"),
+  // Absolute URLs for the OG image are built from this, so it has to be the
+  // domain cards are actually shared from. The apex redirects to www, which
+  // makes www the canonical host.
+  metadataBase: new URL("https://www.cindytruong.site"),
   title: { default: SITE_TITLE, template: `%s — ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   openGraph: {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/images/og.png",
+        url: "/images/og-wordmark.png",
         width: 1200,
         height: 630,
         alt: SITE_TITLE,
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/images/og.png"],
+    images: ["/images/og-wordmark.png"],
   },
 };
 
