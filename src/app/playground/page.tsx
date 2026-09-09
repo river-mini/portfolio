@@ -6,7 +6,7 @@ import { playgroundItems } from "@/data/playground";
 export const metadata: Metadata = {
   title: "Playground",
   description:
-    "Smaller pieces by Cindy Truong — edits, motion tests and graphics made for their own sake.",
+    "Smaller pieces by Cindy Truong — video edits, graphics and interfaces created for fun.",
 };
 
 export default function PlaygroundPage() {
@@ -15,7 +15,7 @@ export default function PlaygroundPage() {
       <Container>
         <h1 className="page-rise text-page-title max-w-[16ch]">Playground</h1>
         <p className="page-rise text-body-lg text-muted mt-5 max-w-[52ch]">
-          Edits, motion tests and graphics made for their own sake.
+          Video edits, Graphics and Interfaces I created for fun!
         </p>
       </Container>
 
