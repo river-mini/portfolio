@@ -25,7 +25,7 @@ export const projects: Project[] = [
     heroMedia: "/images/projects/longhorn-loop/cover.jpg",
     heroAspect: "3200 / 1706",
     shortDescription:
-      "A personalized event board bringing 1,000+ UT orgs’ events into one feed.",
+      "A personalized event board that brings events from 1,000+ UT student organizations into one feed.",
   },
   {
     slug: "animated-intro",

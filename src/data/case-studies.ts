@@ -76,13 +76,6 @@ function placeholderSections(): CaseStudySection[] {
   ];
 }
 
-/**
- * Every media block below points here until the real export is dropped in.
- * Grep PLACEHOLDER_MEDIA to find every slot still waiting on a file -- the
- * comment above each one names the asset it is standing in for.
- */
-const PLACEHOLDER_MEDIA = "/images/projects/project-1-wide.png";
-
 /** Per-slug overrides. Projects without an entry fall back to the outline. */
 const caseStudies: Record<string, CaseStudy> = {
   "sweethearts-x-barbie": {
@@ -737,14 +730,14 @@ const caseStudies: Record<string, CaseStudy> = {
           {
             type: "text",
             paragraphs: [
-              "A personalized event board for UT students — everything happening on campus, sorted by what you actually care about.",
+              "Longhorn Loop helps UT students find campus events that match their interests, save what they want to attend, and keep track of everything in one place.",
             ],
           },
           {
             type: "factSheet",
             items: [
               { label: "Role", value: "Design Fellow → Design Lead (Aug 2026)" },
-              { label: "Timeline", value: "Aug 2025 — Present" },
+              { label: "Timeline", value: "Aug 2025 to Present" },
               {
                 label: "Team",
                 value: [
@@ -759,12 +752,12 @@ const caseStudies: Record<string, CaseStudy> = {
                 label: "I designed",
                 value: [
                   "Account creation and onboarding",
-                  "Event detail and map overlay",
+                  "Event details and map overlay",
                   "Explore filters",
                   "Profile and edit profile",
                   "Reporting flow",
-                  "Academic standing update",
-                  "Core components — buttons, dropdowns, search",
+                  "Academic standing updates",
+                  "Core components: buttons, dropdowns, and search",
                 ],
               },
             ],
@@ -777,46 +770,42 @@ const caseStudies: Record<string, CaseStudy> = {
         blocks: [
           {
             type: "text",
-            heading: "Campus events are everywhere except in one place",
+            heading: "Campus events are everywhere, just not in one place",
             paragraphs: [
-              "UT Austin has 55,000 students and over 1,000 recognized student organizations putting on events constantly. The events aren’t the problem — finding them is. They live on Instagram stories, GroupMe, and printed flyers, and while HornsLink exists as UT’s central org database, it isn’t where students actually look.",
-              "A student can miss the one event meant for them because it lived on an account they don’t follow.",
+              "UT Austin has more than 55,000 students and over 1,000 recognized student organizations. There is always something happening, but finding those events is scattered across Instagram, GroupMe, flyers, and HornsLink.",
+              "Students can miss an event that would have been perfect for them simply because they never saw the post.",
             ],
           },
           {
             type: "text",
             heading: "Asking students how they actually find things to do",
             paragraphs: [
-              "We ran a 30-response survey to find the patterns, then two rounds of interviews — about 20 students total — spaced across the project so we could check our assumptions twice.",
-              "Survey, 30 students: how students currently find campus events, and what makes them decide to go.",
-              "Interviews, round one, roughly 10 students: early in the project, to understand the discovery habits behind the survey answers.",
-              "Interviews, round two, roughly 10 students: later, against working designs, to test whether those assumptions survived contact.",
+              "We started with a survey of 30 students, then ran two rounds of interviews with about 20 students total. The first round helped us understand how students currently discover events. The second happened later, once we had working designs, so we could check whether our decisions still made sense to real students.",
             ],
           },
-          // Appendix: three method cards, redrawn in Figma. No source file --
-          // do not screenshot Google Forms.
           {
-            type: "media",
-            media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "Research methods: survey and two interview rounds",
-            },
+            type: "list",
+            items: [
+              "Survey, 30 students. How students currently find campus events and what makes an event worth attending.",
+              "Interview round one, about 10 students. How students discover events and where that process breaks down.",
+              "Interview round two, about 10 students. How students reacted to our working designs and whether our earlier assumptions still held up.",
+            ],
           },
           {
             type: "text",
-            heading: "Three things students needed before they’d show up",
+            heading: "Three things students needed before they would show up",
             paragraphs: [
-              "1. Tell me what’s actually in it for me. Students decide fast, and they decide on specifics — free food, swag, prizes, who’s speaking. A title and a time isn’t enough to justify the walk.",
-              "2. Show me why this event is for me. Relevance had to be visible on the card itself, not buried a tap away.",
-              "3. Make it findable, then remind me. Discovery was only half the problem. Students found events they wanted to attend and then forgot about them.",
+              "1. Show me why it’s worth going. Students make the decision pretty quickly. Things like free food, swag, prizes, or an interesting speaker can be the reason someone chooses one event over another. A title and time alone usually aren’t enough.",
+              "2. Show me why this event fits me. Students wanted to know why an event was relevant to them without having to open every single event first.",
+              "3. Help me remember it. Finding an event was only part of the problem. Students would see something they wanted to attend, move on, and then forget about it later.",
             ],
           },
           {
             type: "text",
             heading:
-              "How might we bring campus events into one place and surface the ones that actually fit each student?",
+              "How might we make campus events easier to discover while still showing students the ones most relevant to them?",
             paragraphs: [
-              "HornsLink is a directory — you go to it already knowing what you’re looking for. We were building a feed: something that knows what a student cares about before they open it, and that stays with them from finding an event to actually showing up.",
+              "HornsLink works more like a directory. You usually go there when you already know what you’re looking for. We wanted Longhorn Loop to feel more like a feed that learns from the interests students choose and helps them go from finding an event to actually attending it.",
             ],
           },
         ],
@@ -827,10 +816,11 @@ const caseStudies: Record<string, CaseStudy> = {
         blocks: [
           {
             type: "text",
-            heading: "01 — Cutting a tab",
+            heading: "01. Simplifying the navigation",
             paragraphs: [
-              "The first structure had five tabs: Home, Explore, Create, Events, Profile. Events and Profile were doing overlapping work — both were places you went to see your own stuff.",
-              "We folded Events into Profile as three filters: Going, Saved, Posted. Four tabs, one mental model, and a profile that finally had a reason to exist beyond a bio.",
+              "Our first structure had five tabs: Home, Explore, Create, Events, and Profile.",
+              "Events and Profile started to feel repetitive because both were places students went to find their own activity. Instead of keeping another destination in the navigation, we moved Events into Profile and separated them into Going, Saved, and Posted.",
+              "That brought the navigation down to four tabs and gave Profile a much clearer purpose.",
             ],
           },
           // Both exports are 402x874, so the pair lines up exactly and the
@@ -841,78 +831,86 @@ const caseStudies: Record<string, CaseStudy> = {
               {
                 src: "/images/projects/longhorn-loop/tabs-before.png",
                 alt: "Lo-fi events list with a five-tab bottom nav: home, explore, create, events, profile",
-                caption: "Before — five tabs",
+                caption: "Before: Five separate tabs",
                 aspect: "402 / 874",
               },
               {
                 src: "/images/projects/longhorn-loop/tabs-after.png",
                 alt: "Hi-fi home screen with a four-tab bottom nav: Home, Explore, Create, Profile",
-                caption: "After — four tabs, Events folded into Profile",
+                caption: "After: Events moved into Profile",
                 aspect: "402 / 874",
               },
             ],
           },
           {
             type: "text",
-            heading: "02 — Onboarding that earns the personalization",
+            heading: "02. Making onboarding worth it",
             paragraphs: [
-              "The whole product depends on knowing what a student is interested in, so interest selection is the most important screen in the app. The first version was a 3×4 grid of unlabeled tiles asking students to choose three or more — no search, no structure, no way to find something specific.",
-              "The rebuild groups interests into six collapsible categories — Social & Networking, Gaming & Entertainment, Learning & Education, Sports & Fitness, Food & Drink, Nightlife & Parties — adds search across all of them, and shows a running count per category. Searching something we do not have returns “Tag not listed? Send it in”, so an unmet interest becomes a signal instead of a dead end.",
-              "Avatar selection got the same treatment. The lo-fi made students pick one of four preset Bevos to continue. The rebuilt version offers three paths — upload a photo, customize a Bevo, or skip — so a step that was a gate became one a student opts into.",
+              "The feed only works if we know what a student cares about, so interest selection became one of the most important parts of onboarding.",
+              "Our first version used a 3 by 4 grid of unlabeled tiles. Students had to choose at least three interests, but there was no search, no grouping, and no easy way to find something specific.",
+              "I redesigned it into collapsible categories with search and a running count of the interests a student selects. If someone searches for an interest we don’t have yet, they can send it in. That turns a missing option into useful feedback for us instead of leaving them at a dead end.",
             ],
           },
-          // Appendix: left = lo-fi_onboarding.png "Select your Interest" grid.
-          // Right = Hifis__13_.png frames 1 and 4, plus the "No results" frame.
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Lo-fi grid of unlabeled interest tiles", caption: "Before — an unlabeled tile grid" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi categorized, searchable interest tags", caption: "After — categorized and searchable, with a send-it-in fallback" },
-            ],
-          },
-          // Appendix: left = lo-fi_onboarding.png, the four preset Bevos.
-          // Right = 1788297449092_image.png frame 1 plus one customizer frame.
-          {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Lo-fi avatar selection with four preset options", caption: "Before — pick one of four to continue" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi avatar screen offering upload, customize or skip", caption: "After — upload, customize, or skip" },
-            ],
+            type: "media",
+            media: {
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/Loop%20demo%20-%20onboarding.mp4",
+              kind: "video",
+              poster: "/images/projects/longhorn-loop/onboarding-interests.png",
+              alt: "Onboarding, from account creation through interest selection, academic information and verification",
+              caption: "From account creation to interests, academic info, and verification.",
+              aspect: "8 / 5",
+              fit: "contain",
+            },
           },
           {
             type: "text",
-            heading: "03 — Designing around flyers we do not control",
             paragraphs: [
-              "Orgs make their own flyers, and they make them at whatever aspect ratio they want — vertical, square, horizontal. The event board is mostly flyers, so the card had to hold all three without the feed falling apart.",
-              "I tested the variants against a two-column layout and locked the card to a fixed ratio with consistent metadata below the image: org name with verification badge, date, time, location.",
+              "The avatar step had a similar problem. The early version forced students to choose from four preset Bevos before they could continue.",
+              "I changed it so students could upload their own photo, customize a Bevo, or skip the step completely. They still get the fun personalization if they want it, but it isn’t something we force them to do.",
             ],
           },
-          // Appendix: left = lo-fi_homepage.png flyer variant row (top-left).
-          // Right = Hifis__11_.png, the populated Home board (right frame).
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Lo-fi flyer variants at three aspect ratios", caption: "Before — three ratios, one feed" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi Explore board with real flyers", caption: "After — fixed card ratio, consistent metadata" },
-            ],
+            type: "media",
+            media: {
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/Loop%20demo%20-%20personalization.mp4",
+              kind: "video",
+              poster: "/images/projects/longhorn-loop/bevo-customizer.png",
+              alt: "The Bevo customizer, with photo upload and skip as the other two paths",
+              caption: "Students can customize a Bevo, upload their own photo, or skip personalization completely.",
+              aspect: "8 / 5",
+              fit: "contain",
+            },
           },
+          // Still missing the lo-fi exports for a before/after pair here: the
+          // 3x4 unlabeled interest grid, and the four-preset Bevo step.
+          // Captions when they arrive: "Before: An unlabeled tile grid" /
+          // "After: Categorized and searchable", then "Before: Choose one of
+          // four presets to continue" / "After: Upload, customize, or skip".
           {
             type: "text",
-            heading: "04 — Designing for bad behavior",
+            heading: "03. Making every flyer fit",
             paragraphs: [
-              "An open posting platform for 50,000 students needs a way to flag what should not be there. The report flow covers four reasons — violent or harmful, misinformation, troll or spam, concern not listed — requires a description, blocks submission until both are filled, and confirms that a human will review it.",
-              "Small surface, but it is the difference between a prototype and something you can hand to real students.",
+              "Event cards were trickier than they looked because student organizations create their own flyers in all kinds of sizes. A feed with vertical, square, and horizontal images starts to feel messy pretty quickly.",
+              "I tested the different flyer sizes inside a two-column layout and landed on a fixed card ratio with consistent information underneath: organization, date, time, and location.",
+              "The flyer can change, but the structure around it stays predictable.",
             ],
           },
-          // Appendix: left = lo-fi_homepage.png report frame (right cluster).
-          // Right = Hifis__6_.png, keeping validation and confirmation frames.
+          // Still missing: the flyer ratio variants beside the fixed card.
+          // Captions: "Before: Different flyer ratios competing in the same
+          // feed" / "After: Consistent cards with predictable event information".
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Lo-fi report screen", caption: "Before" },
-              { src: PLACEHOLDER_MEDIA, alt: "Hi-fi report flow with validation and confirmation", caption: "After — validation and confirmation states" },
+            type: "text",
+            heading: "04. Designing for when something goes wrong",
+            paragraphs: [
+              "Because students can post events, we also needed a clear way to report something that shouldn’t be on the platform.",
+              "The flow covers violent or harmful content, misinformation, troll or spam content, and concerns that don’t fit one of those options. Students have to choose a reason and add a description before they can submit the report.",
+              "It’s a small part of the overall product, but it matters once the app moves beyond a prototype and into beta with real students.",
             ],
           },
+          // Still missing: the report flow, before and after. Captions:
+          // "Before: Basic reporting screen" / "After: Required information,
+          // validation, and confirmation".
         ],
       },
       {
@@ -923,19 +921,20 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             heading: "Campus, all in one place",
             paragraphs: [
-              "A personalized board built from the interests a student picks during onboarding, with a time-aware greeting and upcoming events up top.",
+              "Home uses the interests students choose during onboarding to shape their event feed. Upcoming events sit near the top so students can quickly see what’s coming up, while the rest of the board gives them a personalized way to browse campus.",
             ],
           },
-          // Hosted on Vercel Blob rather than committed -- see the README on
-          // keeping video out of the repo. Served as video/mp4 despite having
-          // no extension in the path.
+          // The main reveal, and the longest of the three demos. Hosted on
+          // Vercel Blob rather than committed, per the README.
           {
             type: "media",
             media: {
-              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/longhorn-loop-sneak-peek",
+              src: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/Loop%20demo%20-%20main.mp4",
               kind: "video",
-              alt: "Home — the personalized event board",
-              aspect: "16 / 10",
+              poster: "/images/projects/longhorn-loop/home-feed.png",
+              alt: "The finished app across discovery, event details, profiles and account settings",
+              caption: "The final Longhorn Loop experience across discovery, event details, profiles, and account settings.",
+              aspect: "8 / 5",
               fit: "contain",
             },
           },
@@ -943,100 +942,83 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             heading: "Find something outside your bubble",
             paragraphs: [
-              "Explore is search plus filters: sort, time of day, in-person or online, distance, and Perks — free food, free swag, free stuff, prizes. That last filter came straight from the first finding. Students told us what makes an event worth attending, so we made it filterable.",
+              "Explore gives students another way to browse beyond their personalized Home feed.",
+              "They can search and filter by things like time of day, in-person or online, distance, and perks such as free food, swag, or prizes. The perks filter came directly from our research because students kept bringing those details up when explaining why they would actually attend an event.",
             ],
-          },
-          // Appendix: Explore + filter panel, screen recording.
-          // Hifis__2_.png and Hifis__1_.png for reference.
-          {
-            type: "media",
-            media: { src: PLACEHOLDER_MEDIA, alt: "Explore with the filter panel open" },
           },
           {
             type: "text",
             heading: "Everything you need in one tap",
             paragraphs: [
-              "Date, location, host, interest tags, who is going, and RSVP on one screen. Save it and the app reminds you before it starts — the gap where students told us they lost events they had already found. Tapping the location opens a map overlay with walking distance and a handoff to Maps. If the org has not posted a location yet, the event says so and offers to notify you when it is added.",
+              "The event page keeps the information students need to make a decision in one place: date, location, host, interest tags, who’s going, and RSVP.",
+              "Students can save an event and get reminded before it starts, which helps with the problem we heard during research where someone would find something interesting and then forget about it.",
+              "Tapping the location opens a map view with walking distance and a handoff to Maps. If an organization hasn’t added a location yet, the page says so clearly instead of leaving the student guessing.",
             ],
           },
-          // Appendix: Event detail, RSVP, map overlay — screen recording.
-          // Hifis__8_.png and Hifis__7_.png for reference.
+          // Both stills are 1920x1200, so the pair shares one ratio and neither
+          // screen has to be cropped to match the other.
           {
-            type: "media",
-            media: { src: PLACEHOLDER_MEDIA, alt: "Event detail, RSVP and the map overlay" },
+            type: "mediaPair",
+            media: [
+              {
+                src: "/images/projects/longhorn-loop/event-detail-2.png",
+                alt: "Event detail with date, location, host, interest tags, who is going, and RSVP",
+                caption: "Event information and RSVP in one place.",
+                aspect: "8 / 5",
+              },
+              {
+                src: "/images/projects/longhorn-loop/explore-map-2.png",
+                alt: "Explore in map view, with event pins across campus and a selected event card",
+                caption: "Explore’s map view, with events pinned across campus.",
+                aspect: "8 / 5",
+              },
+            ],
           },
           {
             type: "text",
             heading: "Your events, three ways",
             paragraphs: [
-              "Profile holds Going, Saved, and Posted, with search and filters inside each. Org accounts use the same layout with an Upcoming and Past split.",
+              "Profile is where students can keep track of Going, Saved, and Posted events. Each section has its own search and filters.",
+              "Organization accounts use the same general structure with Upcoming and Past events, so the experience still feels familiar.",
             ],
           },
-          // Appendix: Hifis__4_.png — Profile and Organization page, stills.
-          {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Profile with Going, Saved and Posted" },
-              { src: PLACEHOLDER_MEDIA, alt: "Organization page with Upcoming and Past" },
-            ],
-          },
-          {
-            type: "text",
-            heading: "Built to survive a team that turns over",
-            paragraphs: [
-              "Fellows cycle out every year. The system is how the work stays consistent when the people do not. I built the button set, the year and classification dropdowns, and the search-and-dropdown pattern used across onboarding, explore, and profile.",
-            ],
-          },
-          // Appendix: one wide image exported fresh from Figma — type scale,
-          // color ramp, event card anatomy, component library.
           {
             type: "media",
             media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "Type scale, color ramp, event card anatomy and component library",
-              aspect: "16 / 9",
+              src: "/images/projects/longhorn-loop/profile-events-2.png",
+              alt: "Profile showing the Going, Saved and Posted sections",
+              caption: "Going, Saved, and Posted events live inside Profile.",
+              aspect: "8 / 5",
             },
           },
           {
             type: "text",
-            heading: "The states nobody screenshots",
+            heading: "Built for a team that changes every year",
             paragraphs: [
-              "The academic standing prompt is the one worth calling out: it asks students to update their year, so the feed stays relevant past freshman year.",
+              "Longhorn Loop is built by student teams, and fellows rotate out each year. That made the design system especially important.",
+              "I built and maintained reusable patterns for buttons, dropdowns, search, and form controls so new designers can keep building without having to recreate the same decisions every year.",
             ],
           },
-          // Appendix crops: Hifis__16_.png frame 3, Hifis__6_.png frame 4.
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Invalid UT email error", caption: "Invalid UT email" },
-              { src: PLACEHOLDER_MEDIA, alt: "Required fields not filled", caption: "Required fields not filled" },
+            type: "text",
+            heading: "The states that are easy to forget",
+            paragraphs: [
+              "Not every important screen is going to be a portfolio hero shot. I also worked through error states, empty states, confirmation screens, and smaller updates so students always know what happened and what they should do next.",
+              "One example is the academic standing prompt. It asks returning students to update their year over time so the feed doesn’t keep treating someone like a freshman after they’ve moved on.",
             ],
           },
-          // Appendix crops: Hifis__13_.png last frame, Hifis__7_.png frame 4.
+          // Listed rather than shown: the state crops are still to be exported.
           {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "No search results, with a send-it-in fallback", caption: "No results, with send it in" },
-              { src: PLACEHOLDER_MEDIA, alt: "No location listed for this event", caption: "No location listed yet" },
+            type: "list",
+            items: [
+              "Invalid UT email",
+              "Required fields not filled",
+              "No results, with send it in",
+              "No location listed yet",
+              "Leave without saving",
+              "Undo delete",
+              "Update academic standing",
             ],
-          },
-          // Appendix crops: Hifis__3_.png frame 6, Hifis__9_.png frame 3.
-          {
-            type: "mediaPair",
-            media: [
-              { src: PLACEHOLDER_MEDIA, alt: "Leave without saving confirmation", caption: "Leave without saving" },
-              { src: PLACEHOLDER_MEDIA, alt: "Undo delete on notifications", caption: "Undo delete" },
-            ],
-          },
-          // Appendix crop: Hifis__5_.png.
-          {
-            type: "media",
-            media: {
-              src: PLACEHOLDER_MEDIA,
-              alt: "Prompt to update academic standing",
-              caption: "New academic standing",
-              aspect: "4 / 3",
-            },
           },
         ],
       },
@@ -1048,7 +1030,7 @@ const caseStudies: Record<string, CaseStudy> = {
             type: "text",
             heading: "Where it stands",
             paragraphs: [
-              "Longhorn Loop enters beta testing in September 2026. I joined at ideation in August 2025 as a design fellow and now lead the design team.",
+              "Longhorn Loop enters beta testing in September 2026. I joined the project during ideation in August 2025 as a design fellow, and I now lead the design team.",
             ],
           },
           {
@@ -1068,28 +1050,31 @@ const caseStudies: Record<string, CaseStudy> = {
         blocks: [
           {
             type: "text",
-            heading: "Designing for a team that turns over",
+            heading: "Designing for a team that changes",
             paragraphs: [
-              "Fellows rotate out yearly, so anything undocumented gets rebuilt or quietly dropped. Building components and states other people could pick up mattered more than any single screen I made.",
-              "We were also our own users, which cut both ways. It made the research fast to interpret and it made it easy to assume we already knew the answer — the second interview round existed partly to keep us honest about that.",
+              "One of my biggest takeaways from this project is that good design isn’t only about the screens I personally finish.",
+              "Fellows rotate out each year, so components, documentation, and clear states matter because someone else eventually has to understand the work and continue it.",
+              "We’re also the target users, which is helpful but can be risky. Since we’re all UT students, it’s easy to assume our own habits represent everyone. The second round of interviews helped us check those assumptions against students outside of the design team.",
             ],
           },
           {
             type: "text",
-            heading: "From making screens to owning them",
+            heading: "From owning flows to leading the product",
             paragraphs: [
-              "As a fellow I was responsible for my own flows. As lead I am responsible for whether all of them add up to one product — which turns out to be a mostly different job, and mostly about running critique well.",
+              "As a fellow, I mainly focused on the flows assigned to me. As design lead, I have to look across everyone’s work and make sure it still feels like one product.",
+              "A lot of that has been less about making every screen myself and more about critique, consistency, and helping other designers work through their decisions.",
             ],
           },
           {
             type: "text",
-            heading: "The open question",
+            heading: "What I still want to learn",
             paragraphs: [
-              "A 30-person survey and two rounds of interviews got us to something coherent. What they cannot tell us is whether the personalized board actually works — whether a student opens it, finds an event they would not have found otherwise, and goes. The September beta is the first real test of that, and it is the number I want.",
+              "Our research helped us build something that makes sense in interviews and usability testing, but beta is where we’ll find out whether it actually changes behavior.",
+              "The question I care about most is pretty simple: does a student discover an event they would have missed otherwise and actually go?",
             ],
           },
         ],
-      }
+      },
     ],
   },
 };

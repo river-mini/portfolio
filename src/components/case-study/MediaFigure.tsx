@@ -1,3 +1,4 @@
+import { CaseStudyVideo } from "./CaseStudyVideo";
 import { SmartImage } from "../SmartImage";
 import type { CaseStudyMedia } from "@/types/case-study";
 
@@ -49,14 +50,10 @@ export function MediaFigure({
 
   const content =
     media.kind === "video" ? (
-      <video
+      <CaseStudyVideo
         src={media.src}
-        muted
-        loop
-        playsInline
-        controls
-        preload="metadata"
-        aria-label={media.alt || undefined}
+        poster={media.poster}
+        alt={media.alt}
         className={`absolute inset-0 h-full w-full ${fitClass}`}
       />
     ) : (

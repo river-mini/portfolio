@@ -14,6 +14,12 @@ export type CaseStudyMedia = {
   caption?: string;
   /** Defaults to "image". Use "video" for MP4/WebM sources. */
   kind?: "image" | "video";
+  /**
+   * Video only: the frame shown before playback. It is what loads first, so
+   * the footage itself is fetched only for a reader who scrolls that far, and
+   * it is all a reader who asked for reduced motion ever sees move.
+   */
+  poster?: string;
   /** CSS aspect-ratio value, e.g. "16 / 9". Defaults per block type. */
   aspect?: string;
   /**
