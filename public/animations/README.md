@@ -1,35 +1,43 @@
 # Intro animation
 
-`intro.json` is the loading animation played over the homepage before the hero
-is revealed. It is currently a **placeholder** (a sage dot that scales and
-fades).
+The loading screen over the homepage is the wordmark's star, spinning while the
+page loads and then shrinking away as the screen fades to the hero.
 
-## Replacing it
+It is **not** a file. The star is an inline SVG in
+`src/components/IntroOverlay.tsx`: a single stroked path drawn point to point,
+so the middle stays open, with round caps and joins and its vertices set
+slightly off true. Drawing it in the component rather than fetching it is the
+point. Anything loaded over the network leaves the overlay empty for exactly as
+long as the connection is slow, which is when a visitor most needs to see that
+something is happening.
 
-1. In After Effects, export with the **Bodymovin / LottieFiles** plugin as JSON.
-2. Save it here as `intro.json`, overwriting the placeholder.
-3. Reload the homepage. Nothing else needs changing.
+## Changing it
 
-## What the site does with it
+- **The shape** is the `d` attribute on the path in `IntroOverlay.tsx`. Five
+  points connected every other one, which is what leaves the star hollow.
+- **The weight** is `strokeWidth` on the same SVG, in a 100-unit viewBox. It is
+  9, which matches the wordmark. Heavier than about 10 closes up the gaps and it
+  stops reading as a star.
+- **The size and the exit** are `.intro-overlay__animation` in
+  `src/app/globals.css` (currently `min(46vw, 300px)`, scaling to `0.35` on the
+  way out).
+- **The spin** is `.intro-overlay__star` and the `intro-star-spin` keyframes,
+  also in `globals.css`. Linear on purpose: it is a loader, and an eased spin
+  that repeats starts to look stuck.
 
-- Plays once per full page load, at `src/components/IntroOverlay.tsx`.
-- The overlay fades out on the animation's `complete` event, so the reveal is
-  timed to your animation rather than to a guessed duration. Set the animation's
-  own length in After Effects and the site follows it.
-- A 6-second ceiling force-ends it, so a slow or broken file can never trap a
-  visitor. If your animation is longer than that, raise `MAX_DURATION_MS`.
-- Skipped entirely for visitors who prefer reduced motion, and when navigating
-  back to the homepage from another page in the same session.
-- Sized by `.intro-overlay__animation` in `src/app/globals.css`
-  (currently `min(46vw, 300px)`).
+## How long it shows
 
-## Notes
+The page decides, not a fixed length. The overlay holds until `window.load`
+fires, with a 900ms floor so a warm cache still gets a beat rather than a
+flicker, and a 6-second ceiling so a stalled load can never strand anyone. Both
+live at the top of `IntroOverlay.tsx`.
 
-- Keep it under a few hundred KB; it blocks the hero reveal while it plays.
-- Loops are disabled deliberately (`loop: false`) since the animation has to end
-  for the site to appear.
-- Images embedded in a Lottie export land in a separate `images/` folder. If
-  yours has any, either keep them alongside this file and adjust the path, or
-  re-export with assets inlined as base64.
-- Transparent backgrounds work fine — the overlay sits on the site's cream
-  background colour.
+It plays once per full page load and is skipped when navigating back to the
+homepage client-side. Visitors who prefer reduced motion never see it: the
+overlay is hidden in CSS and resolves on the next frame.
+
+## The other files here
+
+`CindyWaterMark.webm` and `CindyWaterMark-still.webp` are the animated hero
+wordmark and its fallback frame, used by `src/components/WordmarkAnimation.tsx`.
+The star in the top half of that wordmark is the one the intro redraws.

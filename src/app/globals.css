@@ -114,6 +114,167 @@
   }
 }
 
+/* The intro star, as one long sequence rather than a short loop on repeat:
+   turn, scribbles, rest, turn, scribbles, rest, then a double turn and a
+   longer rest to close. Every beat lands on a multiple of 360, so the star
+   always comes to a stop upright and the loop point is invisible. Varying the
+   beats is what stops a 7.8s run from reading as the same second three times.
+
+   The two-turn flourish at the end is quicker per rotation than the single
+   turns, which is what makes it read as a flourish. */
+@keyframes intro-star-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  10%,
+  33% {
+    transform: rotate(360deg);
+  }
+  44%,
+  67% {
+    transform: rotate(720deg);
+  }
+  81%,
+  100% {
+    transform: rotate(1440deg);
+  }
+}
+
+/* The ring drifts outward as the marks draw, so the burst travels as well as
+   appears. Visibility is the dash's job, not this one's: the marks are still
+   fully trimmed away at 0%, so the reset back to the small scale is never
+   seen. */
+@keyframes intro-star-burst {
+  0%,
+  7% {
+    transform: scale(0.94);
+  }
+  17% {
+    transform: scale(1.1);
+  }
+  17.01%,
+  41% {
+    transform: scale(0.94);
+  }
+  51% {
+    transform: scale(1.1);
+  }
+  51.01%,
+  78% {
+    transform: scale(0.94);
+  }
+  88%,
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Trim path, in two moves. From 40% the dash slides on and the mark draws
+   itself from the end nearest the star outward; from 62% it keeps going, so
+   the tail leaves by the same end the head did and the mark is gone rather
+   than faded. One dash and one gap, each a full path length, is what lets a
+   single offset do both halves. */
+/* Whether a scribble may be seen at all. Open only between the end of a
+   turn and the end of that turn's pulse, shut everywhere else. */
+@keyframes intro-star-burst-show {
+  0%,
+  7% {
+    opacity: 0;
+  }
+  7.01%,
+  17% {
+    opacity: 1;
+  }
+  17.01%,
+  41% {
+    opacity: 0;
+  }
+  41.01%,
+  51% {
+    opacity: 1;
+  }
+  51.01%,
+  78% {
+    opacity: 0;
+  }
+  78.01%,
+  88% {
+    opacity: 1;
+  }
+  88.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* A trim in two moves, one pulse per turn, each starting as its turn stops.
+
+   The dash is "L 1": a run of ink of length L followed by a gap of a whole
+   path, so only one run can ever be on the mark. Growing L walks the head
+   forward from the start; then, with the head parked at the end, sliding the
+   offset walks the tail after it. Both ends travel the same way, so the mark
+   leaves by the end it arrived at instead of shrinking back the way it came.
+
+   L is 0 between pulses. The visibility gate still covers those stretches,
+   because a round cap paints even on a dash of no length. */
+@keyframes intro-star-burst-draw {
+  0%,
+  7% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: 0;
+  }
+  10.5% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+  }
+  17% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+  }
+  17.01%,
+  41% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: 0;
+  }
+  44.5% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+  }
+  51% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+  }
+  51.01%,
+  78% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: 0;
+  }
+  81.5% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+  }
+  88%,
+  100% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+  }
+}
+
+/* Arriving: fading up and growing through the first turn, so the star is
+   still coming into the frame while it is already spinning. Ending exactly
+   as that turn lands is what ties the two together instead of leaving the
+   entrance finished and the star still moving. */
+@keyframes intro-star-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 :root {
   /* Motion durations. Basic interactions stay in the 200-400ms band.
      In markup these map to Tailwind's duration-200 / 300 / 400. */
@@ -254,9 +415,51 @@
     opacity: 0;
     pointer-events: none;
   }
+  /* The wrapper carries the exit, the star inside carries the spin. Both on
+     one element would collide: an animation on transform beats a transition on
+     the same property, and the zoom out would never run. */
   .intro-overlay__animation {
-    width: min(46vw, 300px);
+    width: min(42vw, 280px);
     max-width: 76vw;
+    color: var(--color-ink);
+    transition: transform var(--dur-slow) var(--ease-standard);
+  }
+  /* 780ms is the first turn: 10% of the 7.8s cycle, where intro-star-spin
+     reaches its first 360. Arrival and turn therefore land together. */
+  .intro-overlay__enter {
+    animation: intro-star-in 780ms var(--ease-standard) both;
+  }
+  /* Receding as the screen clears, so the intro leaves rather than just
+     switching off. Same duration as the fade it goes out with. */
+  .intro-overlay.is-leaving .intro-overlay__animation {
+    transform: scale(0.35);
+  }
+  .intro-overlay__star {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform-origin: 50% 50%;
+    animation: intro-star-spin 7.8s var(--ease-standard) infinite;
+  }
+  /* Same duration as the spin, so the burst stays locked to the turn that
+     throws it. fill-box rather than the viewBox: the marks form a ring
+     around the star, so their own bounding box is already centred on it. */
+  .intro-overlay__burst {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: intro-star-burst 7.8s var(--ease-standard) infinite;
+  }
+  /* The dash is parked at 1.3 path lengths, not 1. A round cap on a dash of
+     zero length still paints a dot, so stopping the dash exactly on the start
+     or the end leaves one sitting on the mark, turning with the star. Pushing
+     it a third of a length clear puts the cap off the path entirely. */
+  /* Two animations: one trims the mark, one decides whether it may be seen.
+     No dasharray here, since the visible length is the thing being animated
+     and the keyframes own it. Caps stay round, as the rest of the drawing is. */
+  .intro-overlay__burst path {
+    animation:
+      intro-star-burst-draw 7.8s var(--ease-standard) infinite,
+      intro-star-burst-show 7.8s linear infinite;
   }
 
   /* Hero scroll cue: the arrow drifts down on a slow loop to read as
