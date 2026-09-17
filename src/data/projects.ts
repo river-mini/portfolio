@@ -11,8 +11,10 @@ import type { Project } from "@/types/project";
  * thumbnail     -> put exports in /public/images/projects, or use a CDN URL
  * hoverVideoUrl -> optional, externally hosted MP4/WebM (never committed here)
  *
- * The hoverVideoUrl values below point at small public sample clips purely
- * so the hover interaction can be tested. Replace them with your own.
+ * hoverVideoUrl is a short muted cut of the project's own footage, played on
+ * the card while a pointer is over it. Keep these small: a card should preview
+ * itself for a fraction of what the full piece weighs. A project without one
+ * is not missing anything -- its cover pushes in on hover instead.
  */
 export const projects: Project[] = [
   {
@@ -22,6 +24,7 @@ export const projects: Project[] = [
     categories: ["UI/UX", "Motion Design"],
     thumbnail: "/images/projects/longhorn-loop/splash.png",
     thumbnailFit: "contain",
+    hoverVideoUrl: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/longhorn-hover.mp4",
     heroMedia: "/images/projects/longhorn-loop/cover.jpg",
     heroAspect: "3200 / 1706",
     shortDescription:
@@ -33,6 +36,7 @@ export const projects: Project[] = [
     year: "Jul — Aug 2026",
     categories: ["Motion Design"],
     thumbnail: "/images/projects/arh301/gallery.png",
+    hoverVideoUrl: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/arh301-hover.mp4",
     heroMedia: "/images/projects/arh301/gallery.png",
     shortDescription:
       "A 30-second animated course intro that walks you through a gallery and is cheeky on the way out.",
@@ -54,6 +58,7 @@ export const projects: Project[] = [
     year: "Mar 2026",
     categories: ["Motion Design"],
     thumbnail: "/images/projects/sweethearts/cover.jpg",
+    hoverVideoUrl: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/sweethearts-hover.mp4",
     heroMedia: "/images/projects/sweethearts/cover.jpg",
     heroAspect: "1080 / 607",
     shortDescription:

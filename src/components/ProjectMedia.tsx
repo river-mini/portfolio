@@ -79,6 +79,16 @@ export function ProjectMedia({
 
   const canPreview = Boolean(videoUrl) && hoverEnabled;
 
+  /**
+   * How far the thumbnail pushes in on hover. Where a preview is going to take
+   * over, the still only has to move enough to feel live before it hands off.
+   * Where there is no preview, the push is the whole interaction, so it is
+   * worth actually seeing. Keyed off the prop rather than off canPreview: that
+   * depends on a media query the server cannot answer, and the class has to be
+   * the same in both renders.
+   */
+  const zoom = videoUrl ? "group-hover:scale-[1.015]" : "group-hover:scale-[1.06]";
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -118,7 +128,7 @@ export function ProjectMedia({
         priority={priority}
         className={`ease-standard ${
           fit === "contain" ? "object-contain p-4" : "object-cover"
-        } transition-[opacity,transform] duration-400 group-hover:scale-[1.015]`}
+        } transition-[opacity,transform] duration-400 ${zoom}`}
         style={{ opacity: playing ? 0 : 1 }}
       />
 
