@@ -476,7 +476,7 @@
 }
 
 /* Honour the OS-level reduced-motion preference everywhere, including the
-   smooth scrolling and the filter/entrance animations. */
+   smooth scrolling and the entrance animations. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

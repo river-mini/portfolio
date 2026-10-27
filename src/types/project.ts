@@ -7,16 +7,6 @@
 
 export type ProjectCategory = "UI/UX" | "Motion Design" | "Graphic Design";
 
-/** Ordered list that drives the homepage filter controls. */
-export const PROJECT_CATEGORIES = [
-  "UI/UX",
-  "Motion Design",
-  "Graphic Design",
-] as const satisfies readonly ProjectCategory[];
-
-/** "All" is a filter state, not a category a project can carry. */
-export type ProjectFilter = "All" | ProjectCategory;
-
 export type Project = {
   slug: string;
   title: string;
