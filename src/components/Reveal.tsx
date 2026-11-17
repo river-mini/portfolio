@@ -8,7 +8,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
  * "idle" is what the server renders: visible. An element is only hidden once we
  * know it starts below the fold, so nothing flashes out and back, and the
  * content stays readable if JavaScript never runs. Anything already on screen
- * at mount -- a filter swap, a short page -- plays immediately instead of
+ * at mount -- the first row, a short page -- plays immediately instead of
  * waiting for a scroll that will never come.
  */
 export function Reveal({

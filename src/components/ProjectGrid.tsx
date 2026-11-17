@@ -1,14 +1,13 @@
+import { AssembleGrid } from "./AssembleGrid";
 import { Container } from "./Container";
 import { ProjectCard } from "./ProjectCard";
-import { Reveal } from "./Reveal";
 import type { Project } from "@/types/project";
 
 /**
  * The homepage work section.
  *
- * Each card rises in as its own row reaches the viewport, rather than the
- * whole grid animating once on mount: scrolling down reveals row by row, and
- * the cards are still in their entrance state when the work link jumps here.
+ * The cards start gathered at the grid's centre point and spread out to their
+ * places as the visitor scrolls into the section (see AssembleGrid).
  */
 export function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
@@ -22,18 +21,13 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
           </h2>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:gap-x-10 lg:gap-y-14">
+        <AssembleGrid className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:gap-x-10 lg:gap-y-14">
           {projects.map((project, index) => (
-            <Reveal
-              key={project.slug}
-              className="h-full"
-              // Two columns, so the second card in each row trails the first.
-              delay={(index % 2) * 90}
-            >
+            <div key={project.slug} className="h-full will-change-transform">
               <ProjectCard project={project} priority={index < 2} />
-            </Reveal>
+            </div>
           ))}
-        </div>
+        </AssembleGrid>
       </Container>
     </section>
   );
