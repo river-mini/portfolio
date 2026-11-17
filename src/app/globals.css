@@ -396,6 +396,7 @@
     transition: transform var(--dur-base) var(--ease-standard);
   }
   .nav-link:hover::after,
+  .nav-lockup:hover .nav-link::after,
   .nav-link[data-active="true"]::after {
     transform: scaleX(1);
   }

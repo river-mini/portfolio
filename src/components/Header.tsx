@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "./Container";
+import { LogoMark } from "./LogoMark";
 import { WorkLink } from "./WorkLink";
 
 /**
@@ -84,15 +85,19 @@ export function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between md:h-20">
-          {/* One link for the whole lockup, so the nav-link underline spans both
-              lines instead of stopping short under the name. items-start keeps
-              it to the lockup width rather than the header column. */}
-          <Link href="/" className="nav-link flex flex-col items-start">
-            <span className="text-body font-semibold leading-tight">
-              Cindy Truong
-            </span>
-            <span className="text-label text-subtle mt-1 uppercase">
-              Product &amp; Visual Designer
+          {/* One link for the whole lockup. The underline sits on the text
+              column only, so it spans both lines without running under the
+              logo, and hovering anywhere on the lockup draws it. The logo is
+              decorative: the name beside it already labels the link. */}
+          <Link href="/" className="nav-lockup group flex items-center gap-3">
+            <LogoMark />
+            <span className="nav-link flex flex-col items-start">
+              <span className="text-body font-semibold leading-tight">
+                Cindy Truong
+              </span>
+              <span className="text-label text-subtle mt-1 uppercase">
+                Product &amp; Visual Designer
+              </span>
             </span>
           </Link>
 
