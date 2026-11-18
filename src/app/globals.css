@@ -495,3 +495,125 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Playground board. Positions come from CSS variables set per item: --xn/--yn
+   /--rn for the portrait phone board, --xw/--yw/--rw for the landscape one,
+   both fractions of the board (and degrees of tilt). See PlaygroundBoard.tsx.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .playground-board {
+    background-color: var(--color-bg-raised);
+    background-image: radial-gradient(
+      var(--color-line-strong) 1px,
+      transparent 1.2px
+    );
+    background-size: 22px 22px;
+  }
+
+  .board-item {
+    position: absolute;
+    left: calc(var(--xn) * 100%);
+    top: calc(var(--yn) * 100%);
+    transform: translate(-50%, -50%) rotate(var(--rn));
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  @media (min-width: 48rem) {
+    .board-item {
+      left: calc(var(--xw) * 100%);
+      top: calc(var(--yw) * 100%);
+      transform: translate(-50%, -50%) rotate(var(--rw));
+    }
+  }
+  /* Peekers sit flush against an edge, cut off by it, and slide along it. Two
+     classes, so these win over .board-item at every breakpoint; the position
+     along the edge still comes from that breakpoint's variable. */
+  .board-item.board-item--edge-bottom {
+    top: auto;
+    bottom: 0;
+    transform: translate(-50%, 0);
+  }
+  .board-item.board-item--edge-left {
+    left: 0;
+    transform: translate(0, -50%);
+  }
+  .board-item.board-item--edge-right {
+    left: auto;
+    right: 0;
+    transform: translate(0, -50%);
+  }
+
+  /* Only while tidying up, so dragging itself stays glued to the pointer. */
+  .board-item--tidying {
+    transition:
+      left 600ms var(--ease-standard),
+      top 600ms var(--ease-standard);
+  }
+
+  .polaroid {
+    box-shadow:
+      0 1px 2px rgb(27 28 25 / 0.08),
+      0 6px 16px -8px rgb(27 28 25 / 0.2);
+  }
+  .polaroid:hover {
+    box-shadow: var(--shadow-card);
+  }
+  .polaroid--lifted,
+  .polaroid--lifted:hover {
+    box-shadow:
+      0 2px 4px rgb(27 28 25 / 0.08),
+      0 24px 40px -18px rgb(27 28 25 / 0.35);
+  }
+
+  /* A still sticker. Held: it grows a little and tilts in 3D about its top-left
+     corner, so the bottom-right corner peels up towards the viewer and its
+     shadow drops further away. Dropped: the transition runs back, so it shrinks
+     and that corner lays down flat, like the sticker being pressed in place. */
+  .decal {
+    transform-origin: 18% 12%;
+    filter: drop-shadow(0 1px 1px rgb(27 28 25 / 0.14))
+      drop-shadow(0 3px 5px rgb(27 28 25 / 0.12));
+    transition:
+      transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .decal--lifted {
+    transform: perspective(700px) scale(1.08) rotateX(16deg) rotateY(-18deg);
+    filter: drop-shadow(0 2px 2px rgb(27 28 25 / 0.1))
+      drop-shadow(10px 18px 14px rgb(27 28 25 / 0.22));
+    transition-duration: 220ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .decal,
+    .decal--lifted {
+      transition: none;
+    }
+  }
+
+  /* A slow, uneven drift: three waypoints so it never reads as a bounce. */
+  .board-float {
+    animation: board-float 7s ease-in-out infinite;
+  }
+  @keyframes board-float {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-2deg);
+    }
+    33% {
+      transform: translate(7px, -12px) rotate(2deg);
+    }
+    66% {
+      transform: translate(-6px, -5px) rotate(-1deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .board-float {
+      animation: none;
+    }
+    .board-item--tidying {
+      transition: none;
+    }
+  }
+}

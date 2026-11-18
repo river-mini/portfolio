@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { rendersAlpha } from "@/lib/videoAlpha";
 
 /**
  * The source is 1920x1080 and the wrapper matches it exactly, with the video
@@ -35,32 +36,6 @@ const MAX_WIDTH =
   ") * " +
   ASPECT_RATIO +
   ")))";
-
-/**
- * Does this browser honour the video's alpha channel?
- *
- * WebKit plays VP9 in WebM but ignores its transparency, painting what should
- * be see-through as opaque black -- so on any iOS browser the wordmark arrives
- * as a black rectangle. Nothing reports this, and canPlayType says "probably"
- * either way, so the frame is drawn to a canvas and a corner pixel is read:
- * see-through means alpha survived decoding, opaque means it did not.
- */
-function rendersAlpha(video: HTMLVideoElement) {
-  try {
-    const canvas = document.createElement("canvas");
-    canvas.width = 16;
-    canvas.height = 16;
-    const context = canvas.getContext("2d", { willReadFrequently: true });
-    if (!context) return true; // cannot tell, so leave the video alone
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    // The wordmark sits in the middle of the frame, so a corner is transparent
-    // whenever alpha is being honoured.
-    return context.getImageData(0, 0, 1, 1).data[3] < 250;
-  } catch {
-    return true; // same-origin should hold, but never break the hero over this
-  }
-}
 
 /**
  * The animated wordmark, played as a plain <video>.

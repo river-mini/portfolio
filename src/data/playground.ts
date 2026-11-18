@@ -1,10 +1,15 @@
-import type { PlaygroundItem } from "@/types/playground";
+import type {
+  BoardSpot,
+  PlaygroundDecal,
+  PlaygroundItem,
+  PlaygroundSticker,
+} from "@/types/playground";
 
 /**
  * ---------------------------------------------------------------------------
  * PLAYGROUND — the file to edit when adding a piece.
  * ---------------------------------------------------------------------------
- * Order here is the order shown. Every entry needs a square thumbnail; add
+ * Order here is the order the arrows step through once a piece is open. Every entry needs a square thumbnail; add
  * `media` when the thing that should open is different from it -- a video, or
  * a full-size version of the image.
  *
@@ -60,3 +65,86 @@ export const playgroundItems: PlaygroundItem[] = [
     },
   },
 ];
+
+/**
+ * Animated characters that float around the board alongside the pieces. They
+ * are small local files (a few hundred KB each), so they live in
+ * public/animations/playground rather than on the CDN.
+ */
+export const playgroundStickers: PlaygroundSticker[] = [
+  {
+    id: "sticky-wave",
+    label: "An orange sticky-note character waving hello",
+    webm: "/animations/playground/sticky-wave.webm",
+    webp: "/animations/playground/sticky-wave.webp",
+    still: "/animations/playground/sticky-wave-still.webp",
+    loopFrom: 2,
+    behaviour: "float",
+  },
+  {
+    id: "sticky-squint",
+    label: "An orange sticky-note character squinting suspiciously",
+    webm: "/animations/playground/sticky-squint.webm",
+    webp: "/animations/playground/sticky-squint.webp",
+    still: "/animations/playground/sticky-squint-still.webp",
+    loopFrom: 3,
+    behaviour: "float",
+  },
+  {
+    id: "sticky-cap",
+    label: "An orange sticky-note character in a cap, peeking up",
+    webm: "/animations/playground/sticky-cap.webm",
+    webp: "/animations/playground/sticky-cap.webp",
+    still: "/animations/playground/sticky-cap-still.webp",
+    behaviour: "peek",
+    side: {
+      webm: "/animations/playground/sticky-cap-side.webm",
+      webp: "/animations/playground/sticky-cap-side.webp",
+      still: "/animations/playground/sticky-cap-side-still.webp",
+    },
+  },
+];
+
+/**
+ * Still stickers on the board. The cat is the site logo with a white border
+ * added around its silhouette (public/images/playground/cat-sticker.png).
+ */
+export const playgroundDecals: PlaygroundDecal[] = [
+  {
+    id: "cat-sticker",
+    src: "/images/playground/cat-sticker.png",
+    width: 560,
+    height: 628,
+    label: "A sticker of the cat-shaped C logo",
+  },
+];
+
+/**
+ * Where everything starts on the board, keyed by id. Visitors can drag things
+ * anywhere and their arrangement is remembered in their own browser; these are
+ * the spots before that, and what "Tidy up" returns to.
+ *
+ * Wide is the desktop board (landscape), narrow the phone board (portrait).
+ * Anything without a spot here is placed automatically.
+ */
+export const boardLayout: Record<"wide" | "narrow", Record<string, BoardSpot>> = {
+  wide: {
+    "muichiro-edit": { x: 0.2, y: 0.34, rotate: -4 },
+    "toge-edit": { x: 0.5, y: 0.5, rotate: 2.5 },
+    "white-elephant-invite": { x: 0.8, y: 0.36, rotate: -1.5 },
+    "sticky-wave": { x: 0.7, y: 0.8, rotate: 0 },
+    "sticky-squint": { x: 0.3, y: 0.8, rotate: 0 },
+    "sticky-cap": { x: 0.1, y: 0.6, rotate: 0, edge: "left" },
+    "cat-sticker": { x: 0.5, y: 0.14, rotate: 8 },
+  },
+  // The cat takes the top middle, so the photos sit a row lower than on desktop.
+  narrow: {
+    "muichiro-edit": { x: 0.3, y: 0.3, rotate: -4 },
+    "toge-edit": { x: 0.68, y: 0.52, rotate: 3 },
+    "white-elephant-invite": { x: 0.32, y: 0.75, rotate: -2 },
+    "sticky-wave": { x: 0.76, y: 0.14, rotate: 0 },
+    "sticky-squint": { x: 0.76, y: 0.85, rotate: 0 },
+    "sticky-cap": { x: 0.15, y: 0.52, rotate: 0, edge: "left" },
+    "cat-sticker": { x: 0.5, y: 0.1, rotate: 8 },
+  },
+};
