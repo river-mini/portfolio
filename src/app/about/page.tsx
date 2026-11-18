@@ -39,7 +39,7 @@ const CREDENTIALS = [
     entries: [
       { detail: "Design Assistant, UT LAITS", period: "Jun 2026 — Present" },
       {
-        detail: "UX Design Fellow, Longhorn Developers",
+        detail: "UX Design Lead, Longhorn Developers",
         period: "Aug 2025 — Present",
       },
       {
