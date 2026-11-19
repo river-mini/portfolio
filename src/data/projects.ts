@@ -22,11 +22,10 @@ export const projects: Project[] = [
     title: "Longhorn Loop",
     year: "Aug 2025 — Present",
     categories: ["UI/UX", "Motion Design"],
-    thumbnail: "/images/projects/longhorn-loop/loop-cover.jpg",
-    // Small enough (~2.7 MB) to ship from /public rather than the CDN.
-    hoverVideoUrl: "/animations/longhorn-loop-hover.mp4",
-    heroMedia: "/images/projects/longhorn-loop/loop-cover.jpg",
-    heroAspect: "3456 / 2310",
+    thumbnail: "/images/projects/longhorn-loop/loop-cover-v2.jpg",
+    hoverVideoUrl: "https://7vxrad93nks5odjn.public.blob.vercel-storage.com/loop-hover.mp4",
+    heroMedia: "/images/projects/longhorn-loop/loop-cover-v2.jpg",
+    heroAspect: "3922 / 2622",
     shortDescription:
       "A personalized event board that brings events from 1,000+ UT student organizations into one feed.",
   },
