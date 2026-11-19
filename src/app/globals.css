@@ -617,3 +617,33 @@
     }
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Hero aura: pastel blooms behind the homepage hero. See HeroAura.tsx.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .hero-aura {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  /* A still fade to the page colour along the bottom, so the colour melts
+     into the work section instead of ending in a line. An overlay rather than
+     a mask: a mask over moving layers is repainted every frame. */
+  .hero-aura::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, var(--color-bg));
+  }
+  /* A small canvas stretched to fill the hero; smoothing hides the upscale. */
+  .hero-aura__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

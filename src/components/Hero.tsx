@@ -1,4 +1,5 @@
 import { Container } from "./Container";
+import { HeroAura } from "./HeroAura";
 import { WordmarkAnimation } from "./WordmarkAnimation";
 import { WorkLink } from "./WorkLink";
 
@@ -12,13 +13,15 @@ import { WorkLink } from "./WorkLink";
  */
 export function Hero() {
   return (
-    <section className="flex min-h-[calc(100svh-4rem)] items-center py-10 md:min-h-[calc(100svh-5rem)]">
+    <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-center py-10 md:min-h-[calc(100svh-5rem)]">
+      <HeroAura />
+
       {/* Without JavaScript the intro never signals, so unhide the lines. */}
       <noscript>
         <style>{".hero-line{opacity:1}"}</style>
       </noscript>
 
-      <Container className="text-center">
+      <Container className="relative z-10 text-center">
         <p className="hero-line text-label text-subtle uppercase">
           UI/UX · Motion · Product · Graphic
         </p>

@@ -355,7 +355,7 @@ export function PlaygroundBoard({
     <Container className="max-w-6xl">
       <div className="mb-4 flex items-center justify-between gap-4">
         <p className="text-meta text-subtle font-semibold">
-          Drag anything around or Click a photo to open it!
+          DRAG anything around or CLICK a polaroid to open it!
         </p>
         <button
           type="button"

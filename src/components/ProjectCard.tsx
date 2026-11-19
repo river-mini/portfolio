@@ -41,7 +41,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
         alt={`${title} — project preview`}
         aspect="3 / 2"
         fit={thumbnailFit}
-        sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+        sizes="(min-width: 1440px) 660px, (min-width: 768px) 50vw, 100vw"
         priority={priority}
       />
 
